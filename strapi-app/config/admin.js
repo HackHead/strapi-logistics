@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 module.exports = ({ env }) => ({
   auth: {
     secret: env('ADMIN_JWT_SECRET'),
@@ -7,7 +9,7 @@ module.exports = ({ env }) => ({
   },
   transfer: {
     token: {
-      salt: env('TRANSFER_TOKEN_SALT'),
+      salt: crypto.randomBytes(16).toString('base64')
     },
   },
 });
