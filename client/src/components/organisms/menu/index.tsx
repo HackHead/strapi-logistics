@@ -1,4 +1,5 @@
 // @ts-nocheck
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 interface SubmenuState {
@@ -47,9 +48,9 @@ function Menu({ data, show }) {
       );
     } else {
       return (
-        <a href={item.attributes.url} className={`nav-link`} key={item.id}>
+        <Link href={item.attributes.url} className={`nav-link`} key={item.id}>
           {item.attributes.title}
-        </a>
+        </Link>
       );
     }
   };
@@ -59,13 +60,13 @@ function Menu({ data, show }) {
       {
         Object.keys(data).length &&
           <div className="navbar-nav ms-auto py-0">
-            <a href="/" className={`nav-item nav-link`} >
+            <Link href="/" className={`nav-item nav-link`} >
               Главная
-            </a>
+            </Link>
             {data.map((item) => renderMenuItem(item, null))}
-            <a href="/contacts" className={`nav-item nav-link`}>
+            <Link href="/contacts" className={`nav-item nav-link`}>
               Контакты
-            </a>
+            </Link>
           </div>
       } 
       

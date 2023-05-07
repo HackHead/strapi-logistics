@@ -1,7 +1,8 @@
+// @ts-nocheck ;
 import { ReactNode } from "react";
 import Footer from "../organisms/footer";
 import Header from "../organisms/header";
-// @ts-nocheck ;
+import Link from "next/link";
 
 const DefaultLayout = ({children}: {children: ReactNode}) => {
     return (
@@ -10,9 +11,9 @@ const DefaultLayout = ({children}: {children: ReactNode}) => {
             <div className="container-xxl position-relative p-0"> 
                 <Header/>
                 {children}
-                <a href="#" className="btn btn-lg btn-secondary btn-lg-square back-to-top">
+                <Link href="/" className="btn btn-lg btn-secondary btn-lg-square back-to-top">
                     <i className="bi bi-arrow-up" />
-                </a>
+                </Link>
                 <Footer/>
             </div>
         </div>

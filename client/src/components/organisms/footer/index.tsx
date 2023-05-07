@@ -2,6 +2,7 @@ import { getFooterGenerall, getContacts, server } from "@/http";
 import { Contacts } from "@/pages/contacts";
 import { useEffect, useState } from "react";
 import { initialContacts } from "@/pages/contacts";
+import Link from "next/link";
 
 export interface GenerallData {
     twitter_url: string;
@@ -179,10 +180,10 @@ const Footer = () => {
                         </div>
                         <div className="col-md-6 text-center text-md-end">
                             <div className="footer-menu">
-                                <a href="#">Home</a>
-                                <a href="#">Cookies</a>
-                                <a href="#">Help</a>
-                                <a href="#">FQAs</a>
+                                <Link href="/">Home</Link>
+                                <Link href="/">Cookies</Link>
+                                <Link href="/">Help</Link>
+                                <Link href="/">FQAs</Link>
                             </div>
                         </div>
                     </div>

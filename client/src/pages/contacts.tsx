@@ -60,8 +60,8 @@ export default function Home() {
       <Head>
         <title>Контакты</title>
         <meta name="description" content="Страница контактов" />
-        <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" defer></Script>
       </Head>
+      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" defer></Script>
       <div className="container-xxl bg-white p-0">
         <div className="container-xxl position-relative p-0">
           <DefaultLayout>
@@ -185,7 +185,7 @@ export default function Home() {
                     <div className="border rounded text-center p-4 mt-4">
                       <h3 className="fw-bold mb-4">Need Any Help?</h3>
                       <a className="btn btn-primary py-3 px-5" href="">
-                        Let's Chat
+                        Let`s Chat
                       </a>
                     </div>
                   </div>

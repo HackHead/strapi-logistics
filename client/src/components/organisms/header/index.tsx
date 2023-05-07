@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { server } from "@/http";
 import Menu from "../menu";
+import Link from "next/link";
 
 interface SubmenuItem {
     id: number;
@@ -53,9 +54,9 @@ const Header = () => {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-            <a href="/" className="navbar-brand p-0">
+            <Link href="/" className="navbar-brand p-0">
                 <h1 className="m-0"><i className="fa fa-server me-3"></i>GreenHost</h1>
-            </a>
+            </Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={() => setShowMenu(!showMenu)}>
                 <span className="fa fa-bars"></span>
             </button>
