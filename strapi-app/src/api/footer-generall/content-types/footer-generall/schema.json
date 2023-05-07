@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "footer_generalls",
+  "info": {
+    "singularName": "footer-generall",
+    "pluralName": "footer-generalls",
+    "displayName": "Footer-generall",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "twitter_url": {
+      "type": "string"
+    },
+    "facebook_url": {
+      "type": "string"
+    },
+    "youtube_url": {
+      "type": "string"
+    },
+    "linkedin_url": {
+      "type": "string"
+    },
+    "copyright": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}
