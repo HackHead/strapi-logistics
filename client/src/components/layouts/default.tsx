@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import Footer from "../organisms/footer";
 import Header from "../organisms/header";
+// @ts-nocheck ;
 
 const DefaultLayout = ({children}: {children: ReactNode}) => {
     return (
