@@ -96,7 +96,7 @@ h6,
     padding: 35px 0;
     font-size: 15px;
     font-family: 'Montserrat', sans-serif;
-    color: #FFFFFF !important;
+    color: #FFFFFF;
     text-transform: uppercase;
     font-weight: 500;
     outline: none;
@@ -125,8 +125,22 @@ h6,
 .sticky-top.navbar-light .navbar-brand img {
     max-height: 45px;
 }
+.nav-item.dropdown {
+    position: relative;
+}
 
+.nav-item.dropdown .nav-item.dropdown .dropdown-menu {
+    position: absolute;
+    right: 100% !important;
+    top: 100% !important;
+}
 @media (max-width: 991.98px) {
+    
+    .nav-item.dropdown .dropdown-menu {
+        position: relative;
+        left: 0% !important;
+        top: 100% !important;
+    }
     .sticky-top.navbar-light {
         position: relative;
         background: #FFFFFF;
