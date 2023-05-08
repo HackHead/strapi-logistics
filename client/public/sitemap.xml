@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>http://www.t-h-logistics.com/</loc>
+    <changefreq>weekly</changefreq>
+    <lastmod>2023-05-08</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>http://www.t-h-logistics.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <lastmod>2023-05-08</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>http://www.t-h-logistics.com/contacts</loc>
+    <changefreq>monthly</changefreq>
+    <lastmod>2023-05-08</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
+
+<!-- Тег <urlset> является корневым элементом XML-файла и определяет пространство имен XML для карты сайта.
+Каждый элемент <url> представляет веб-страницу в карте сайта.
+<loc> указывает URL страницы.
+<changefreq> указывает, как часто должна изменяться страница (варианты: никогда, ежегодно, ежемесячно, еженедельно, ежедневно, ежечасно и всегда).
+<priority> присваивает странице значение приоритета в диапазоне от 0.0 до 1.0, при этом 1.0 является наивысшим приоритетом.
+ -->
