@@ -7,7 +7,7 @@ WORKDIR /app/strapi
 COPY ./strapi-app/package*.json ./
 
 # Install dependencies for the Strapi application
-RUN npm install --no-optional
+RUN npm install 
 
 # Copy the rest of the application files for the Strapi application
 COPY ./strapi-app .
