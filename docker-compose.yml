@@ -2,14 +2,15 @@ version: '3'
 services:
   strapi:
     build:
-      context: ./strapi-app
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./docker/strapi/Dockerfile
     ports:
       - 1337:1337
-
   next:
-    build:
-      context: ./client
-      dockerfile: Dockerfile
+    build: 
+      context: .
+      dockerfile: ./docker/next/Dockerfile
     ports:
       - 3000:3000
+    depends_on:
+      - strapi
