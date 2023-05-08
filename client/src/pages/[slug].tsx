@@ -137,7 +137,7 @@ export async function getServerSideProps({ query }: Query) {
   // Выполняем два запроса к страпи - первый для получения основных данных страницы
   // и второй для получения меню
   const res = await server.get(`/pages?filters[url][$eq]=${slug}`)
-  const strapiMenu = await server.get(`/menus?nested&filters[title][$eq]=Main&populate=*`);
+  const strapiMenu = await server.get(`/menus?nested&filters[slug][$eq]=main&populate=*`);
 
   // Из меню которые мы получили вытягиваем только те данные которые нам будут нужны для преобразования
   // json в html

@@ -58,7 +58,7 @@ function Menu({ data, show }) {
   return (
     <div className={`collapse navbar-collapse ${show ? 'show' : ''}`} id="navbarCollapse">
       {
-        Object.keys(data).length &&
+        !!data &&
           <div className="navbar-nav ms-auto py-0">
             <Link href="/" className={`nav-item nav-link`} >
               Главная

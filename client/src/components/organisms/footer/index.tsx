@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { getFooterGenerall, getContacts, server } from "@/http";
 import { Contacts } from "@/pages/contacts";
 import { useEffect, useState } from "react";
@@ -94,14 +96,14 @@ const Footer = () => {
     // Получаем footer меню от страпи
     const fetchNav = async () => {
         try {
-            const res = await server.get<NavigationData>('/menus/2?populate=*&nested')
-            const res2 = await server.get<NavigationData>('/menus/3?populate=*&nested')
+            const res = await server.get<NavigationData>('/menus?nested&filters[slug][$eq]=footerServices&populate=*')
+            const res2 = await server.get<NavigationData>('/menus?nested&filters[slug][$eq]=footerAbout&populate=*')
 
-            const title = res.data.data.attributes.title;
-            const items = res.data.data.attributes.items.data;
+            const title = res.data.data[0].attributes.title;
+            const items = res.data.data[0].attributes.items.data;
 
-            const title2 = res2.data.data.attributes.title;
-            const items2 = res2.data.data.attributes.items.data;
+            const title2 = res2.data.data[0].attributes.title;
+            const items2 = res2.data.data[0].attributes.items.data;
         
             setNav2({ title, items });
             setNav1({ title: title2, items: items2 });

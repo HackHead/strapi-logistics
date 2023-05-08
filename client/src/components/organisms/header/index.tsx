@@ -39,9 +39,8 @@ const Header = () => {
 
     const fetchMenus = async () => {
         try {
-            const res = await server.get('/menus/1?nested&populate=*');
-    
-            setMenus(res.data.data?.attributes?.items.data);
+            const res = await server.get('/menus?nested&filters[slug][$eq]=main&populate=*');
+            setMenus(res.data.data[0]?.attributes?.items.data);
         } catch (error) {
             console.log(error)
             throw new Error(`Во время получения навигации произошла ошибка: ${error}`)

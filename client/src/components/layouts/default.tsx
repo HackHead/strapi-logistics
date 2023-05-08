@@ -11,9 +11,9 @@ const DefaultLayout = ({children}: {children: ReactNode}) => {
             <div className="container-xxl position-relative p-0"> 
                 <Header/>
                 {children}
-                <Link href="/" className="btn btn-lg btn-secondary btn-lg-square back-to-top">
+                <button  className="btn btn-lg btn-secondary btn-lg-square back-to-top">
                     <i className="bi bi-arrow-up" />
-                </Link>
+                </button>
                 <Footer/>
             </div>
         </div>
