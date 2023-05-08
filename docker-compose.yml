@@ -19,7 +19,16 @@ services:
       - strapi
     networks:
       - mynetwork
-
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    ports:
+      - 80:80
+    depends_on:
+      - next
+    networks:
+      - mynetwork
 networks:
   mynetwork:
     driver: bridge
