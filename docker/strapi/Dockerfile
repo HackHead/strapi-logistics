@@ -7,7 +7,6 @@ WORKDIR /app/strapi
 COPY ./strapi-app/package.json ./
 
 # Install dependencies for the Strapi application
-RUN npm cache clean --force
 RUN yarn install --force
 
 # Copy the rest of the application files for the Strapi application
@@ -18,6 +17,6 @@ RUN yarn strapi configuration:restore -f dump.json
 RUN yes | yarn strapi import -f export_20230508165230.tar.gz --key abc
 RUN yarn strapi admin:create-user --firstname=Kai --lastname=Doe --email=chef@strapi.io --password=Gourmet1234
 RUN rm -rf .cache
-RUN yarn build
+# RUN yarn build
 # Start the Strapi application
 CMD ["yarn", "start"]
