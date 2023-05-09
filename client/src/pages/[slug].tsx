@@ -1,10 +1,10 @@
 // @ts-nocheck
 
-import { server } from '@/http/index'
-import Head from 'next/head'
-import DefaultLayout from '@/components/layouts/default'
-import Hero from '@/components/organisms/hero'
-import { Crumb } from '@/components/molecules/Breacrumbs'
+import { server } from '@/http/index';
+import Head from 'next/head';
+import DefaultLayout from '@/components/layouts/default';
+import Hero from '@/components/organisms/hero';
+import { Crumb } from '@/components/molecules/Breacrumbs';
 
 // Этот компонент будет генерироваться динамически на основании данных полученых из страпи например:
 // Пользователь переходит на страницу yousite.com/PerevozkaGruzov в браузере, next.js приложение обращается
@@ -27,7 +27,7 @@ export interface PageAttibutes {
   url: string;
   crumbs: Crumb[];
   slug: string;
-};
+}
 export interface PageMeta {
   pagination: {
     page: number;
@@ -35,11 +35,11 @@ export interface PageMeta {
     pageCount: number;
     total: number;
   };
-};
+}
 export interface PageData {
   id: number;
-  attributes: PageAttibutes
-};
+  attributes: PageAttibutes;
+}
 
 export interface Page {
   data: PageData[];
@@ -55,18 +55,24 @@ export interface MenuItem {
     createdAt: string;
     updatedAt: string;
     children: {
-      data: []
-    }
-  }
+      data: [];
+    };
+  };
 }
 export interface Query {
   query: {
     slug: string | null;
-  }
+  };
 }
 
-const Page = ({ seo_title, seo_description, page_title, body, crumbs, slug, }: PageAttibutes) => {
-
+const Page = ({
+  seo_title,
+  seo_description,
+  page_title,
+  body,
+  crumbs,
+  slug,
+}: PageAttibutes) => {
   // Эта функция рекурсивно пробегаем по объекту навигации который мы возвращаем из функции getServerSideProps
   // и генерирует одномерный мессив объектов который будет в последующем преобразован в компонент breadcrumbs
   const findAncestors = (obj: any[], url: string) => {
@@ -81,9 +87,12 @@ const Page = ({ seo_title, seo_description, page_title, body, crumbs, slug, }: P
         });
         return ancestors;
       }
-  
+
       if (item.attributes.children.data.length > 0) {
-        const childAncestors = findAncestors(item.attributes.children.data, url);
+        const childAncestors = findAncestors(
+          item.attributes.children.data,
+          url
+        );
         if (childAncestors.length > 0) {
           ancestors.push({
             id: item.id,
@@ -97,8 +106,8 @@ const Page = ({ seo_title, seo_description, page_title, body, crumbs, slug, }: P
       }
     }
     return ancestors;
-  }
-  
+  };
+
   return (
     <>
       {/* 
@@ -115,20 +124,24 @@ const Page = ({ seo_title, seo_description, page_title, body, crumbs, slug, }: P
         <div className="container-xxl position-relative p-0">
           <DefaultLayout>
             {/* В компонент hero передаем заголовок страницы и данные которые там будут преобразованы в breadcrumb */}
-            <Hero title={page_title} crumbs={findAncestors(crumbs, `${slug}`)} />
-            
+            <Hero
+              title={page_title}
+              crumbs={findAncestors(crumbs, `${slug}`)}
+            />
+
             {/* 
               В этом блоке будут помещены и отрендерены все данные из body. Body - это поле в страпи в коллекции Page.
               там вы можете вписывать как обычный текст так и html код
              */}
-            <div dangerouslySetInnerHTML={{ __html: body }}></div>
+            <div className='cont-body' style={{maxWidth: '90%', margin: '0 auto'}}>
+              <div dangerouslySetInnerHTML={{ __html: body }}></div>
+            </div>
           </DefaultLayout>
         </div>
       </div>
     </>
-  )
-}
-
+  );
+};
 
 export async function getServerSideProps({ query }: Query) {
   // ИЗ строки браузера получаем url и передаем его константе slug
@@ -136,8 +149,10 @@ export async function getServerSideProps({ query }: Query) {
   const slug = `/${query?.slug}` || '';
   // Выполняем два запроса к страпи - первый для получения основных данных страницы
   // и второй для получения меню
-  const res = await server.get(`/pages?filters[url][$eq]=${slug}`)
-  const strapiMenu = await server.get(`/menus?nested&filters[slug][$eq]=main&populate=*`);
+  const res = await server.get(`/pages?filters[url][$eq]=${slug}`);
+  const strapiMenu = await server.get(
+    `/menus?nested&filters[slug][$eq]=main&populate=*`
+  );
 
   // Из меню которые мы получили вытягиваем только те данные которые нам будут нужны для преобразования
   // json в html
@@ -150,13 +165,8 @@ export async function getServerSideProps({ query }: Query) {
     };
   }
 
-  const {
-    seo_title,
-    seo_description,
-    page_title,
-    url,
-    body,
-  }: PageAttibutes = res.data?.data[0].attributes;
+  const { seo_title, seo_description, page_title, url, body }: PageAttibutes =
+    res.data?.data[0].attributes;
 
   return {
     props: {
@@ -166,9 +176,9 @@ export async function getServerSideProps({ query }: Query) {
       url,
       body,
       crumbs,
-      slug
+      slug,
     },
-  }
+  };
 }
 
-export default Page
+export default Page;

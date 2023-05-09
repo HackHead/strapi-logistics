@@ -1,13 +1,13 @@
 // @ts-nocheck
 
-// Это вспомогательный файл от next.js Сюда вы можете импортировать 
+// Это вспомогательный файл от next.js Сюда вы можете импортировать
 // стили как это сделано ниже
 
 import '@/styles/animate.min.css';
 import '@/styles/bootstrap.min.css';
-import '@/styles/global.css';
 import '@/styles/owl.carousel.min.css';
 import '@/styles/dropdown.css';
+import '@/styles/global.css';
 
 // @ts-ignore Типизации для данно библиотеки не существует
 import $ from 'jquery';
@@ -16,10 +16,8 @@ import type { AppProps } from 'next/app';
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    Promise.all([
-      import('wowjs'),
-    ]).then(([WOW]) => {
-      window.jQuery = $
+    Promise.all([import('wowjs')]).then(([WOW]) => {
+      window.jQuery = $;
       const wow = new WOW.WOW({
         boxClass: 'wow',
         animateClass: 'animated',
@@ -29,7 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
       });
       wow.init();
       if (window) {
-        window.jQuery = $
+        window.jQuery = $;
         $(window).scroll(function () {
           if ($(this).scrollTop() > 45) {
             $('.navbar').addClass('sticky-top shadow-sm');
@@ -44,39 +42,39 @@ export default function App({ Component, pageProps }: AppProps) {
             $('.back-to-top').fadeOut('slow');
           }
         });
-        
-        const $dropdown = $(".dropdown");
-        const $dropdownToggle = $(".dropdown-toggle");
-        const $dropdownMenu = $(".dropdown-menu");
-        const showClass = "show";
 
-        $(window).on("load resize", function() {
-            if (this.matchMedia("(min-width: 992px)").matches) {
-                $dropdown.hover(
-                function() {
-                    const $this = $(this);
-                    $this.addClass(showClass);
-                    $this.find($dropdownToggle).attr("aria-expanded", "true");
-                    $this.find($dropdownMenu).addClass(showClass);
-                },
-                function() {
-                    const $this = $(this);
-                    $this.removeClass(showClass);
-                    $this.find($dropdownToggle).attr("aria-expanded", "false");
-                    $this.find($dropdownMenu).removeClass(showClass);
-                }
-                );
-            } else {
-                $dropdown.off("mouseenter mouseleave");
-            }
+        const $dropdown = $('.dropdown');
+        const $dropdownToggle = $('.dropdown-toggle');
+        const $dropdownMenu = $('.dropdown-menu');
+        const showClass = 'show';
+
+        $(window).on('load resize', function () {
+          if (this.matchMedia('(min-width: 992px)').matches) {
+            $dropdown.hover(
+              function () {
+                const $this = $(this);
+                $this.addClass(showClass);
+                $this.find($dropdownToggle).attr('aria-expanded', 'true');
+                $this.find($dropdownMenu).addClass(showClass);
+              },
+              function () {
+                const $this = $(this);
+                $this.removeClass(showClass);
+                $this.find($dropdownToggle).attr('aria-expanded', 'false');
+                $this.find($dropdownMenu).removeClass(showClass);
+              }
+            );
+          } else {
+            $dropdown.off('mouseenter mouseleave');
+          }
         });
-        
+
         Promise.all([
           import('@/scripts/waypoints.min.js'),
           import('@/scripts/owl.carousel.min.js'),
           import('@/scripts/easing.min.js'),
         ]).then(([waypoints, owlCarousel, easing]) => {
-          $(".testimonial-carousel").owlCarousel({
+          $('.testimonial-carousel').owlCarousel({
             autoplay: true,
             smartSpeed: 1000,
             margin: 25,
@@ -85,20 +83,20 @@ export default function App({ Component, pageProps }: AppProps) {
             center: true,
             responsive: {
               0: {
-                items: 1
+                items: 1,
               },
               576: {
-                items: 1
+                items: 1,
               },
               768: {
-                items: 2
+                items: 2,
               },
               992: {
-                items: 3
-              }
-            }
+                items: 3,
+              },
+            },
           });
-        })
+        });
       }
     });
   }, []);

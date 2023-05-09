@@ -3,13 +3,13 @@
 // Вы можете изменять их так же как делаете в обычном html с единственной поправкой
 // Что нужно использовать className вместо class
 
-import Head from 'next/head'
-import DefaultLayout from '@/components/layouts/default'
-import { useEffect, useState } from 'react'
+import Head from 'next/head';
+import DefaultLayout from '@/components/layouts/default';
+import { useEffect, useState } from 'react';
 import { server } from '@/http';
 import Script from 'next/script';
 
-export interface  Contacts {
+export interface Contacts {
   location: string;
   phone_number: string;
   email: string;
@@ -25,8 +25,6 @@ export interface StrapiContacts {
   meta: {};
 }
 
-
-
 export const initialContacts: Contacts = {
   location: '',
   phone_number: '',
@@ -38,30 +36,31 @@ export const initialContacts: Contacts = {
 export default function Home() {
   const [contacts, setContacts] = useState<Contacts>(initialContacts);
 
-
   // Функция которая делает запрос к страпи для получения контактов
   const fetchContacts = async () => {
     try {
-      const res = await server.get<StrapiContacts>('/contact')
+      const res = await server.get<StrapiContacts>('/contact');
 
-      setContacts(res?.data?.data?.attributes)
+      setContacts(res?.data?.data?.attributes);
     } catch (error) {
-      throw new Error(`Во время получения произошла ошибка: ${error}`)
+      throw new Error(`Во время получения произошла ошибка: ${error}`);
     }
-  }
+  };
 
-  
   useEffect(() => {
     // Делаем сам запрос после того как страница прогрузилась
-    fetchContacts()
-  }, [])
+    fetchContacts();
+  }, []);
   return (
     <>
       <Head>
         <title>Контакты</title>
         <meta name="description" content="Страница контактов" />
       </Head>
-      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" defer></Script>
+      <Script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        defer
+      ></Script>
       <div className="container-xxl bg-white p-0">
         <div className="container-xxl position-relative p-0">
           <DefaultLayout>
@@ -102,9 +101,9 @@ export default function Home() {
                 >
                   <h1 className="mb-3">Contact For Any Query</h1>
                   <p className="mb-1">
-                    Vero justo sed sed vero clita amet. Et justo vero sea diam elitr amet
-                    ipsum eos ipsum clita duo sed. Sed vero sea diam erat vero elitr sit
-                    clita.
+                    Vero justo sed sed vero clita amet. Et justo vero sea diam
+                    elitr amet ipsum eos ipsum clita duo sed. Sed vero sea diam
+                    erat vero elitr sit clita.
                   </p>
                 </div>
                 <div className="row g-5">
@@ -152,13 +151,16 @@ export default function Home() {
                                 placeholder="Leave a message here"
                                 id="message"
                                 style={{ height: 150 }}
-                                defaultValue={""}
+                                defaultValue={''}
                               />
                               <label htmlFor="message">Message</label>
                             </div>
                           </div>
                           <div className="col-12">
-                            <button className="btn btn-primary w-100 py-3" type="submit">
+                            <button
+                              className="btn btn-primary w-100 py-3"
+                              type="submit"
+                            >
                               Send Message
                             </button>
                           </div>
@@ -166,7 +168,10 @@ export default function Home() {
                       </form>
                     </div>
                   </div>
-                  <div className="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                  <div
+                    className="col-lg-5 col-md-6 wow fadeInUp"
+                    data-wow-delay="0.5s"
+                  >
                     <div className="section-title position-relative mx-auto mb-4 pb-4">
                       <h3 className="fw-bold mb-0">Customer Support</h3>
                     </div>
@@ -196,5 +201,5 @@ export default function Home() {
         </div>
       </div>
     </>
-  )
+  );
 }

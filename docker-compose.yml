@@ -6,9 +6,6 @@ services:
       dockerfile: ./docker/strapi/Dockerfile
     ports:
       - 1337:1337
-    networks:
-      - mynetwork
-
   next:
     build:
       context: .
@@ -17,8 +14,6 @@ services:
       - 3000:3000
     depends_on:
       - strapi
-    networks:
-      - mynetwork
   nginx:
     build:
       context: .
@@ -27,13 +22,3 @@ services:
       - 80:80
     depends_on:
       - next
-    networks:
-      - mynetwork
-networks:
-  mynetwork:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.24.0.0/16
-          gateway: 172.24.0.1
