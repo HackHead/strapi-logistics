@@ -20,4 +20,4 @@ RUN yarn strapi admin:create-user --firstname=Kai --lastname=Doe --email=chef@st
 RUN rm -rf .cache
 RUN yarn build
 # Start the Strapi application
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
