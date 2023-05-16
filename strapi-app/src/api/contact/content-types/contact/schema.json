@@ -4,7 +4,8 @@
   "info": {
     "singularName": "contact",
     "pluralName": "contacts",
-    "displayName": "Contact"
+    "displayName": "Contact",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,13 +13,16 @@
   "pluginOptions": {},
   "attributes": {
     "location": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {}
     },
     "phone_number": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {}
     },
     "email": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {}
     }
   }
 }

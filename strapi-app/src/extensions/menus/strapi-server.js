@@ -8,15 +8,17 @@ module.exports = plugin => {
   // Define custom attributes for `MenuItem` the same way they would be defined
   // on any other schema.
   const customAttrs = {
-    // is_active: {
-    //   type: 'boolean',
-    // },
+    title_en: {
+      type: 'string',
+    },
+    title_uk: {
+      type: 'string',
+    },
   };
-
   // Extend the `MenuItem` content type with custom attributes.
   plugin.contentTypes[ 'menu-item' ].schema.attributes = {
-    ...defaultAttrs,
     ...customAttrs,
+    ...defaultAttrs,
   };
 
   return plugin;
