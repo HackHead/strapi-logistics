@@ -10,11 +10,15 @@
     "attributes": {
       "slug": {
         "type": "string",
-        "required": true
+        "required": false
       },
       "createdAt": {
         "type": "timestamp",
         "autoCreatedAt": true
+      },
+      "title_en": {
+        "type": "string",
+        "required": true
       },
       "updatedAt": {
         "type": "timestamp",

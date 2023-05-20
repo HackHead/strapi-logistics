@@ -10,9 +10,11 @@ module.exports = plugin => {
   const customAttrs = {
     title_en: {
       type: 'string',
+      required: true,
     },
     title_uk: {
       type: 'string',
+      required: true,
     },
   };
   // Extend the `MenuItem` content type with custom attributes.

@@ -17,7 +17,8 @@ module.exports = {
                 label: 'Title EN',
                 name: 'title_en',
                 type: 'text',
-                placeholder: 'Английский перевод'
+                placeholder: 'Английский перевод',
+                required: true,
               },
               grid: {
                 col: 12,
@@ -25,10 +26,11 @@ module.exports = {
             },
             {
               input: {
-                label: 'Title UK',
+                label: 'Title UA',
                 name: 'title_uk',
                 type: 'text',
-                placeholder: 'Украинский перевод'
+                placeholder: 'Украинский перевод',
+                required: true,
               },
               grid: {
                 col: 12,

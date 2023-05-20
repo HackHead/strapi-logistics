@@ -16,6 +16,7 @@
     "@strapi/plugin-users-permissions": "4.10.1",
     "@strapi/strapi": "4.10.1",
     "better-sqlite3": "8.0.1",
+    "react-three-toggle": "^0.5.2",
     "strapi-plugin-menus": "^1.4.1"
   },
   "author": {
