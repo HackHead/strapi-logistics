@@ -119,7 +119,8 @@ export default function Home() {
                           {$t[locale].home.search_domain.paragraph}
                         </p>
                       </div>
-                      <div
+                      {/* здесь была строка с поиском */}
+                      {/* <div
                         className="position-relative w-100 my-3 wow fadeInUp"
                         data-wow-delay="0.3s"
                       >
@@ -134,7 +135,7 @@ export default function Home() {
                         >
                           {$t[locale].home.search_domain.submit}
                         </button>
-                      </div>
+                      </div> */}
                       <div
                         className="row g-3 wow fadeInUp"
                         data-wow-delay="0.5s"
@@ -242,212 +243,7 @@ export default function Home() {
                       {$t[locale].home.plans.paragraph}
                     </p>
                   </div>
-                  <div className="row gy-5 gx-4">
-                    <div
-                      className="col-lg-4 col-md-6 wow fadeInUp"
-                      data-wow-delay="0.2s"
-                    >
-                      <div className="position-relative shadow rounded border-top border-5 border-primary">
-                        <div
-                          className="d-flex align-items-center justify-content-center position-absolute top-0 start-50 translate-middle bg-primary rounded-circle"
-                          style={{
-                            width: '45px',
-                            height: '45px',
-                            marginTop: '-3px',
-                          }}
-                        >
-                          <i className="fa fa-share-alt text-white" />
-                        </div>
-                        <div className="text-center border-bottom p-4 pt-5">
-                          <h4 className="fw-bold">{$t[locale].home.plans.shared.title}</h4>
-                          <p className="mb-0">
-                            {$t[locale].home.plans.shared.description}
-                          </p>
-                        </div>
-                        <div className="text-center border-bottom p-4">
-                          <p className="text-primary mb-1">
-                            {$t[locale].home.plans.last_offer} - <strong>{$t[locale].home.plans.save}</strong>
-                          </p>
-                          <h1 className="mb-3">
-                            <small
-                              className="align-top"
-                              style={{ fontSize: '22px', lineHeight: '45px' }}
-                            >
-                              $
-                            </small>
-                            2.49
-                            <small
-                              className="align-bottom"
-                              style={{ fontSize: '16px', lineHeight: '40px' }}
-                            >
-                              / {$t[locale].home.plans.month}
-                            </small>
-                          </h1>
-                          <a className="btn btn-primary px-4 py-2" href="#">
-                            {$t[locale].home.plans.buy_now}
-                          </a>
-                        </div>
-                        <div className="p-4">
-                          <p className="border-bottom pb-3">
-                            <i className="fa fa-check text-primary me-3" />
-                            {$t[locale].home.plans.disk_space}
-                          </p>
-                          <p className="border-bottom pb-3">
-                            <i className="fa fa-check text-primary me-3" />
-                              {$t[locale].home.plans.bandwith}
-                          </p>
-                          <p className="border-bottom pb-3">
-                            <i className="fa fa-check text-primary me-3" />
-                            {$t[locale].home.plans.ssl}
-                          </p>
-                          <p className="border-bottom pb-3">
-                            <i className="fa fa-check text-primary me-3" />
-                              {$t[locale].home.plans.malware}
-                          </p>
-                          <p className="mb-0">
-                            <i className="fa fa-check text-primary me-3" />
-                            {$t[locale].home.plans.days30}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      className="col-lg-4 col-md-6 wow fadeInUp"
-                      data-wow-delay="0.4s"
-                    >
-                      <div className="position-relative shadow rounded border-top border-5 border-secondary">
-                        <div
-                          className="d-flex align-items-center justify-content-center position-absolute top-0 start-50 translate-middle bg-secondary rounded-circle"
-                          style={{
-                            width: '45px',
-                            height: '45px',
-                            marginTop: '-3px',
-                          }}
-                        >
-                          <i className="fa fa-server text-white" />
-                        </div>
-                        <div className="text-center border-bottom p-4 pt-5">
-                          <h4 className="fw-bold">{$t[locale].home.plans.vps.title}</h4>
-                          <p className="mb-0">
-                            {$t[locale].home.plans.vps.description}
-                          </p>
-                        </div>
-                        <div className="text-center border-bottom p-4">
-                        <p className="text-primary mb-1">
-                            {$t[locale].home.plans.last_offer} - <strong>{$t[locale].home.plans.save}</strong>
-                          </p>
-                          <h1 className="mb-3">
-                            <small
-                              className="align-top"
-                              style={{ fontSize: '22px', lineHeight: '45px' }}
-                            >
-                              $
-                            </small>
-                            5.49
-                            <small
-                              className="align-bottom"
-                              style={{ fontSize: '16px', lineHeight: '40px' }}
-                            >
-                              / {$t[locale].home.plans.month}
-                            </small>
-                          </h1>
-                          <a className="btn btn-secondary px-4 py-2" href="#">
-                            {$t[locale].home.plans.buy_now}
-                          </a>
-                        </div>
-                        <div className="p-4">
-                          <p className="border-bottom pb-3">
-                            <i className="fa fa-check text-primary me-3" />
-                            {$t[locale].home.plans.disk_space}
-                          </p>
-                          <p className="border-bottom pb-3">
-                            <i className="fa fa-check text-primary me-3" />
-                              {$t[locale].home.plans.bandwith}
-                          </p>
-                          <p className="border-bottom pb-3">
-                            <i className="fa fa-check text-primary me-3" />
-                            {$t[locale].home.plans.ssl}
-                          </p>
-                          <p className="border-bottom pb-3">
-                            <i className="fa fa-check text-primary me-3" />
-                              {$t[locale].home.plans.malware}
-                          </p>
-                          <p className="mb-0">
-                            <i className="fa fa-check text-primary me-3" />
-                            {$t[locale].home.plans.days30}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      className="col-lg-4 col-md-6 wow fadeInUp"
-                      data-wow-delay="0.6s"
-                    >
-                      <div className="position-relative shadow rounded border-top border-5 border-primary">
-                        <div
-                          className="d-flex align-items-center justify-content-center position-absolute top-0 start-50 translate-middle bg-primary rounded-circle"
-                          style={{
-                            width: '45px',
-                            height: '45px',
-                            marginTop: '-3px',
-                          }}
-                        >
-                          <i className="fa fa-cog text-white" />
-                        </div>
-                        <div className="text-center border-bottom p-4 pt-5">
-                          <h4 className="fw-bold">{$t[locale].home.plans.dedicated.title}</h4>
-                          <p className="mb-0">
-                            {$t[locale].home.plans.dedicated.description}
-                          </p>
-                        </div>
-                        <div className="text-center border-bottom p-4">
-                          <p className="text-primary mb-1">
-                            {$t[locale].home.plans.last_offer} - <strong>{$t[locale].home.plans.save}</strong>
-                          </p>
-                          <h1 className="mb-3">
-                            <small
-                              className="align-top"
-                              style={{ fontSize: '22px', lineHeight: '45px' }}
-                            >
-                              $
-                            </small>
-                            11.49
-                            <small
-                              className="align-bottom"
-                              style={{ fontSize: '16px', lineHeight: '40px' }}
-                            >
-                              / {$t[locale].home.plans.month}
-                            </small>
-                          </h1>
-                          <a className="btn btn-primary px-4 py-2" href="#">
-                            {$t[locale].home.plans.buy_now}
-                          </a>
-                        </div>
-                        <div className="p-4">
-                          <p className="border-bottom pb-3">
-                            <i className="fa fa-check text-primary me-3" />
-                            {$t[locale].home.plans.disk_space}
-                          </p>
-                          <p className="border-bottom pb-3">
-                            <i className="fa fa-check text-primary me-3" />
-                              {$t[locale].home.plans.bandwith}
-                          </p>
-                          <p className="border-bottom pb-3">
-                            <i className="fa fa-check text-primary me-3" />
-                            {$t[locale].home.plans.ssl}
-                          </p>
-                          <p className="border-bottom pb-3">
-                            <i className="fa fa-check text-primary me-3" />
-                              {$t[locale].home.plans.malware}
-                          </p>
-                          <p className="mb-0">
-                            <i className="fa fa-check text-primary me-3" />
-                            {$t[locale].home.plans.days30}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam asperiores sed accusantium aspernatur animi eum eligendi! Autem, qui? Nihil, dignissimos perspiciatis. Assumenda fuga consequatur sunt, laborum quos sapiente mollitia deserunt itaque quia optio voluptate accusantium, a hic, unde aliquid reiciendis? Error inventore possimus praesentium dignissimos consequuntur sapiente, corrupti necessitatibus quam tempore molestiae! Sint accusamus similique rerum quos facilis commodi cupiditate veniam nisi suscipit, nesciunt neque accusantium dolorum blanditiis odio, aliquid tempora ea placeat dolores quis! Harum quibusdam ipsam cum repudiandae incidunt minus hic, quaerat optio distinctio ducimus nihil exercitationem explicabo, impedit dolorum, molestias excepturi omnis veniam. Numquam consectetur porro minima.</div>
                 </div>
               </div>
               <div className="container-xxl py-5">
@@ -698,31 +494,71 @@ export default function Home() {
                             alt=""
                           />
                           <h5 className="fw-bold mb-1">{$t[locale].home.team.members._1.name}</h5>
-                          <small>{$t[locale].home.team.members._1.job}</small>
                         </div>
                         <div className="d-flex justify-content-center bg-primary p-3">
-                          <a
-                            className="btn btn-square text-primary bg-white m-1"
-                            href="#"
-                          >
-                            <i className="fab fa-facebook-f" />
-                          </a>
-                          <a
-                            className="btn btn-square text-primary bg-white m-1"
-                            href="#"
-                          >
-                            <i className="fab fa-twitter" />
-                          </a>
-                          <a
-                            className="btn btn-square text-primary bg-white m-1"
-                            href="#"
-                          >
-                            <i className="fab fa-instagram" />
-                          </a>
+                          <small style={{color: '#fff', fontWeight: 'bold'}}>{$t[locale].home.team.members._1.job}</small>
+                          
                         </div>
                       </div>
                     </div>
                     <div
+                      className="col-lg-3 col-md-6 wow fadeInUp"
+                      data-wow-delay="0.1s"
+                    >
+                      <div className="team-item border-top border-5 border-primary rounded shadow overflow-hidden">
+                        <div className="text-center p-4">
+                          <img
+                            className="img-fluid rounded-circle mb-4"
+                            src="img/team-2.jpg"
+                            alt=""
+                          />
+                          <h5 className="fw-bold mb-1">{$t[locale].home.team.members._2.name}</h5>
+                        </div>
+                        <div className="d-flex justify-content-center bg-primary p-3">
+                          <small style={{color: '#fff', fontWeight: 'bold'}}>{$t[locale].home.team.members._2.job}</small>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className="col-lg-3 col-md-6 wow fadeInUp"
+                      data-wow-delay="0.1s"
+                    >
+                      <div className="team-item border-top border-5 border-primary rounded shadow overflow-hidden">
+                        <div className="text-center p-4">
+                          <img
+                            className="img-fluid rounded-circle mb-4"
+                            src="img/team-3.jpg"
+                            alt=""
+                          />
+                          <h5 className="fw-bold mb-1">{$t[locale].home.team.members._3.name}</h5>
+                        </div>
+                        <div className="d-flex justify-content-center bg-primary p-3">
+                          <small style={{color: '#fff', fontWeight: 'bold'}}>{$t[locale].home.team.members._3.job}</small>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className="col-lg-3 col-md-6 wow fadeInUp"
+                      data-wow-delay="0.1s"
+                    >
+                      <div className="team-item border-top border-5 border-primary rounded shadow overflow-hidden">
+                        <div className="text-center p-4">
+                          <img
+                            className="img-fluid rounded-circle mb-4"
+                            src="img/team-4.jpg"
+                            alt=""
+                          />
+                          <h5 className="fw-bold mb-1">{$t[locale].home.team.members._4.name}</h5>
+                        </div>
+                        <div className="d-flex justify-content-center bg-primary p-3">
+                          <small style={{color: '#fff', fontWeight: 'bold'}}>{$t[locale].home.team.members._4.job}</small>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    {/* <div
                       className="col-lg-3 col-md-6 wow fadeInUp"
                       data-wow-delay="0.3s"
                     >
@@ -829,7 +665,7 @@ export default function Home() {
                           </a>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

@@ -162,7 +162,7 @@ const Footer = () => {
                       className="btn btn-link"
                       href={item.attributes.url}
                     >
-                      {locale === 'ru' ? item.attributes.title  : item.attributes[`title_${locale}`]}
+                      {locale === 'ru' ? item.attributes.title : item.attributes[`title_${locale}`]}
                     </a>
                   );
                 })}
@@ -176,7 +176,7 @@ const Footer = () => {
                       className="btn btn-link"
                       href={item.attributes.url}
                     >
-                      {locale === 'ru' ? item.attributes.title  : item.attributes[`title_${locale}`]}
+                      {locale === 'ru' ? item.attributes.title : item.attributes[`title_${locale}`]}
                     </a>
                   );
                 })}
@@ -202,6 +202,7 @@ const Footer = () => {
                 className="btn btn-outline-light btn-social"
                 href={generall.twitter_url}
                 target="_blank"
+                rel="nofollow"
               >
                 <i className="fab fa-twitter" />
               </a>
@@ -209,6 +210,7 @@ const Footer = () => {
                 className="btn btn-outline-light btn-social"
                 href={generall.facebook_url}
                 target="_blank"
+                rel="nofollow"
               >
                 <i className="fab fa-facebook-f" />
               </a>
@@ -216,6 +218,7 @@ const Footer = () => {
                 className="btn btn-outline-light btn-social"
                 href={generall.youtube_url}
                 target="_blank"
+                rel="nofollow"
               >
                 <i className="fab fa-youtube" />
               </a>
@@ -223,10 +226,12 @@ const Footer = () => {
                 className="btn btn-outline-light btn-social"
                 href={generall.linkedin_url}
                 target="_blank"
+                rel="nofollow"
               >
                 <i className="fab fa-linkedin-in" />
               </a>
             </div>
+
           </div>
 
           {/* Форма в футере */}

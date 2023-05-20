@@ -38,29 +38,14 @@ interface Menu {
 const Header = () => {
   const [menus, setMenus] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
-
-  const labels = {
-    left: {
-      title: "left",
-      value: "left"
-    },
-    right: {
-      title: "right",
-      value: "right"
-    },
-    center: {
-      title: "none",
-      value: "center"
-    }
-  };
-
-  const onChange = (value: any) => console.log("value", value);
-
+  
   const fetchMenus = async () => {
     try {
+
       const res = await server.get(
         '/menus?nested&filters[slug][$eq]=main&populate=*'
       );
+      console.log(res.data.data[0]?.attributes?.items.data)
       setMenus(res.data.data[0]?.attributes?.items.data);
     } catch (error) {
       console.log(error);
