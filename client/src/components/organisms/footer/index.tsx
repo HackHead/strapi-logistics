@@ -4,7 +4,9 @@ import { getFooterGenerall, getContacts, server } from '@/http';
 import { Contacts } from '@/pages/contacts';
 import { useEffect, useState } from 'react';
 import { initialContacts } from '@/pages/contacts';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
+import $t from '@/locale/global'
 
 export interface GenerallData {
   twitter_url: string;
@@ -49,6 +51,9 @@ export interface NavigationData {
 }
 
 const Footer = () => {
+  const router = useRouter();
+  const locale = router.locale;
+
   const [generall, setGenerall] = useState<GenerallData>({
     twitter_url: '',
     facebook_url: '',
@@ -74,8 +79,8 @@ const Footer = () => {
 
   const fetchGenerallData = async () => {
     try {
-      const data = await getFooterGenerall();
-      setGenerall(data?.data?.attributes);
+      const res = await server.get('/footer-generall');
+      setGenerall(res.data?.data?.attributes);
     } catch (error) {
       console.error(error);
     }
@@ -83,9 +88,9 @@ const Footer = () => {
 
   const fetchContacts = async () => {
     try {
-      const data = await getContacts();
+      const res = await server.get(`/contact?locale=${locale}`);
 
-      setContacts(data?.data?.attributes);
+      setContacts(res.data?.data?.attributes);
     } catch (error) {
       console.error(error);
     }
@@ -130,26 +135,26 @@ const Footer = () => {
         <div className="row gy-5 gx-4 pt-5">
           <div className="col-12">
             <h5 className="fw-bold text-white mb-4">
-              Subscribe Our Newsletter
+              {$t[locale].footer.subscription.title}
             </h5>
             <div className="position-relative" style={{ maxWidth: '400px' }}>
               <input
                 className="form-control bg-white border-0 w-100 py-3 ps-4 pe-5"
                 type="text"
-                placeholder="Enter your email"
+                placeholder={$t[locale].footer.subscription.placeholder}
               />
               <button
                 type="button"
                 className="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2"
               >
-                Submit
+                {$t[locale].footer.subscription.submit}
               </button>
             </div>
           </div>
           <div className="col-lg-5 col-md-12">
             <div className="row gy-5 g-4">
               <div className="col-md-6">
-                <h5 className="fw-bold text-white mb-4">{nav1?.title}</h5>
+                <h5 className="fw-bold text-white mb-4">{$t[locale].footer.about.title}</h5>
                 {nav1?.items?.map(item => {
                   return (
                     <a
@@ -157,13 +162,13 @@ const Footer = () => {
                       className="btn btn-link"
                       href={item.attributes.url}
                     >
-                      {item.attributes.title}
+                      {locale === 'ru' ? item.attributes.title  : item.attributes[`title_${locale}`]}
                     </a>
                   );
                 })}
               </div>
               <div className="col-md-6">
-                <h5 className="fw-bold text-white mb-4">{nav2?.title}</h5>
+                <h5 className="fw-bold text-white mb-4">{$t[locale].footer.services.title}</h5>
                 {nav2?.items?.map(item => {
                   return (
                     <a
@@ -171,7 +176,7 @@ const Footer = () => {
                       className="btn btn-link"
                       href={item.attributes.url}
                     >
-                      {item.attributes.title}
+                      {locale === 'ru' ? item.attributes.title  : item.attributes[`title_${locale}`]}
                     </a>
                   );
                 })}
@@ -179,7 +184,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="col-md-6 col-lg-3">
-            <h5 className="fw-bold text-white mb-4">Get In Touch</h5>
+            <h5 className="fw-bold text-white mb-4">{$t[locale].footer.get_in_touch.title}</h5>
             <p className="mb-2">
               <i className="fa fa-map-marker-alt me-3" />
               {contacts.location}
@@ -245,10 +250,10 @@ const Footer = () => {
             </div>
             <div className="col-md-6 text-center text-md-end">
               <div className="footer-menu">
-                <Link href="/">Home</Link>
-                <Link href="/">Cookies</Link>
-                <Link href="/">Help</Link>
-                <Link href="/">FQAs</Link>
+                <Link href="/">{$t[locale].footer.copyright.menu.home}</Link>
+                <Link href="/">{$t[locale].footer.copyright.menu.cookies}</Link>
+                <Link href="/">{$t[locale].footer.copyright.menu.help}</Link>
+                <Link href="/">{$t[locale].footer.copyright.menu.faq}</Link>
               </div>
             </div>
           </div>

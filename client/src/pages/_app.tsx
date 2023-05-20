@@ -8,11 +8,14 @@ import '@/styles/bootstrap.min.css';
 import '@/styles/owl.carousel.min.css';
 import '@/styles/dropdown.css';
 import '@/styles/global.css';
+import '@/styles/toggler.css'
+import '@/styles/call.btn.css'
 
 // @ts-ignore Типизации для данно библиотеки не существует
 import $ from 'jquery';
 import { useEffect } from 'react';
 import type { AppProps } from 'next/app';
+import Call from '@/components/molecules/Call';
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -104,6 +107,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Component {...pageProps} />
+      <Call/>
     </>
   );
 }

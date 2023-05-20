@@ -72,6 +72,7 @@ const Page = ({
   body,
   crumbs,
   slug,
+  keywords
 }: PageAttibutes) => {
   // Эта функция рекурсивно пробегаем по объекту навигации который мы возвращаем из функции getServerSideProps
   // и генерирует одномерный мессив объектов который будет в последующем преобразован в компонент breadcrumbs
@@ -82,6 +83,8 @@ const Page = ({
         ancestors.push({
           id: item.id,
           title: item.attributes.title,
+          title_en: item.attributes.title_en,
+          title_uk: item.attributes.title_uk,
           url: item.attributes.url,
           children: item.attributes.children.data,
         });
@@ -97,6 +100,8 @@ const Page = ({
           ancestors.push({
             id: item.id,
             title: item.attributes.title,
+            title_en: item.attributes.title_en,
+            title_uk: item.attributes.title_uk,
             url: item.attributes.url,
             children: item.attributes.children.data,
           });
@@ -107,7 +112,8 @@ const Page = ({
     }
     return ancestors;
   };
-
+    
+  
   return (
     <>
       {/* 
@@ -118,6 +124,7 @@ const Page = ({
         <title>{seo_title}</title>
         <meta name="description" content={seo_description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="keyword" content={keywords} />
       </Head>
 
       <div className="container-xxl bg-white p-0">
@@ -133,7 +140,10 @@ const Page = ({
               В этом блоке будут помещены и отрендерены все данные из body. Body - это поле в страпи в коллекции Page.
               там вы можете вписывать как обычный текст так и html код
              */}
-            <div className='cont-body' style={{maxWidth: '90%', margin: '0 auto'}}>
+            <div
+              className="cont-body"
+              style={{ maxWidth: '90%', margin: '0 auto' }}
+            >
               <div dangerouslySetInnerHTML={{ __html: body }}></div>
             </div>
           </DefaultLayout>
@@ -143,13 +153,14 @@ const Page = ({
   );
 };
 
-export async function getServerSideProps({ query }: Query) {
+export async function getServerSideProps({ query, locale }: Query) {
+  const {NEXT_PUBLIC_API_URL} = process.env
   // ИЗ строки браузера получаем url и передаем его константе slug
   // он будет использоваться при обращении к страпи
   const slug = `/${query?.slug}` || '';
   // Выполняем два запроса к страпи - первый для получения основных данных страницы
   // и второй для получения меню
-  const res = await server.get(`/pages?filters[url][$eq]=${slug}`);
+  const res = await server.get(`/pages?filters[url][$eq]=${slug}&locale=${locale}`);
   const strapiMenu = await server.get(
     `/menus?nested&filters[slug][$eq]=main&populate=*`
   );
@@ -165,18 +176,28 @@ export async function getServerSideProps({ query }: Query) {
     };
   }
 
-  const { seo_title, seo_description, page_title, url, body }: PageAttibutes =
-    res.data?.data[0].attributes;
+  const { seo_title, seo_description, page_title, url, body, keywords }: PageAttibutes = res.data?.data[0].attributes;
+  
+  // Удаляем тег srcset 
+  const bodyWithoutSrcset = body.replace(/<img[^>]+srcset=["'][^"']*["'](?:[^>]*)>/g, (match) => {
+    return match.replace(/srcset=["'][^"']*["'](?:[^>]*)>/g, '>');
+  });
 
+  // Преобразуем ссылки на изображения в абсолютый путь
+  const bodyWithAbsoluteURLs = bodyWithoutSrcset.replace(/\/uploads\/([^"]+)/g, `${NEXT_PUBLIC_API_URL}/uploads/$1`);
+  
+  
+  
   return {
     props: {
       seo_title,
       seo_description,
       page_title,
       url,
-      body,
+      body: bodyWithAbsoluteURLs,
       crumbs,
       slug,
+      keywords
     },
   };
 }

@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 // Страница контакто как и главная страница (index.tsx) сделаны статическими
 // То есть их не нужно создавать в страпи и добавлять в меню в страпи,
 // Вы можете изменять их так же как делаете в обычном html с единственной поправкой
@@ -8,6 +10,8 @@ import DefaultLayout from '@/components/layouts/default';
 import { useEffect, useState } from 'react';
 import { server } from '@/http';
 import Script from 'next/script';
+import { useRouter } from 'next/router';
+import $t from '@/locale/global'
 
 export interface Contacts {
   location: string;
@@ -33,9 +37,13 @@ export const initialContacts: Contacts = {
   updatedAt: '',
   publishedAt: '',
 };
+
+
 export default function Home() {
   const [contacts, setContacts] = useState<Contacts>(initialContacts);
-
+  const router = useRouter();
+  const locale = router.locale;
+  
   // Функция которая делает запрос к страпи для получения контактов
   const fetchContacts = async () => {
     try {
@@ -54,8 +62,11 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Контакты</title>
-        <meta name="description" content="Страница контактов" />
+        <title>{$t[locale].contacts.seo_title}</title>
+        <meta name="description" content={$t[locale].contacts.seo_description} />
+        <meta name="keywords" content={$t[locale].contacts.seo_keywords}/>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
@@ -70,18 +81,18 @@ export default function Home() {
                   <div className="row g-5 pt-5">
                     <div className="col-12 text-center text-lg-start">
                       <h1 className="display-4 text-white animated slideInLeft">
-                        Контакты
+                      {$t[locale].menu.contacts}
                       </h1>
                       <nav aria-label="breadcrumb">
                         <ol className="breadcrumb justify-content-center justify-content-lg-start animated slideInLeft">
                           <li className="breadcrumb-item">
                             <a className="text-white" href="#">
-                              Главная
+                            {$t[locale].menu.main}
                             </a>
                           </li>
                           <li className="breadcrumb-item">
                             <a className="text-white" href="#">
-                              Контакты
+                            {$t[locale].menu.contacts}
                             </a>
                           </li>
                         </ol>
@@ -99,12 +110,8 @@ export default function Home() {
                   data-wow-delay="0.1s"
                   style={{ maxWidth: 600 }}
                 >
-                  <h1 className="mb-3">Contact For Any Query</h1>
-                  <p className="mb-1">
-                    Vero justo sed sed vero clita amet. Et justo vero sea diam
-                    elitr amet ipsum eos ipsum clita duo sed. Sed vero sea diam
-                    erat vero elitr sit clita.
-                  </p>
+                  <h1 className="mb-3">{$t[locale].contacts.form.title}</h1>
+                  <p className="mb-1">{$t[locale].contacts.form.paragraph}</p>
                 </div>
                 <div className="row g-5">
                   <div className="col-lg-7 col-md-6">
@@ -119,7 +126,7 @@ export default function Home() {
                                 id="name"
                                 placeholder="Your Name"
                               />
-                              <label htmlFor="name">Your Name</label>
+                              <label htmlFor="name">{$t[locale].contacts.form.name}</label>
                             </div>
                           </div>
                           <div className="col-md-6">
@@ -130,7 +137,7 @@ export default function Home() {
                                 id="email"
                                 placeholder="Your Email"
                               />
-                              <label htmlFor="email">Your Email</label>
+                              <label htmlFor="email">{$t[locale].contacts.form.email}</label>
                             </div>
                           </div>
                           <div className="col-12">
@@ -141,7 +148,7 @@ export default function Home() {
                                 id="subject"
                                 placeholder="Subject"
                               />
-                              <label htmlFor="subject">Subject</label>
+                              <label htmlFor="subject">{$t[locale].contacts.form.subject}</label>
                             </div>
                           </div>
                           <div className="col-12">
@@ -153,7 +160,7 @@ export default function Home() {
                                 style={{ height: 150 }}
                                 defaultValue={''}
                               />
-                              <label htmlFor="message">Message</label>
+                              <label htmlFor="message">{$t[locale].contacts.form.message}</label>
                             </div>
                           </div>
                           <div className="col-12">
@@ -161,7 +168,7 @@ export default function Home() {
                               className="btn btn-primary w-100 py-3"
                               type="submit"
                             >
-                              Send Message
+                              {$t[locale].contacts.form.submit}
                             </button>
                           </div>
                         </div>
@@ -173,7 +180,7 @@ export default function Home() {
                     data-wow-delay="0.5s"
                   >
                     <div className="section-title position-relative mx-auto mb-4 pb-4">
-                      <h3 className="fw-bold mb-0">Customer Support</h3>
+                      <h3 className="fw-bold mb-0">{$t[locale].contacts.form.customer_support}</h3>
                     </div>
                     <p className="mb-2">
                       <i className="fa fa-map-marker-alt text-primary me-3" />
@@ -188,9 +195,9 @@ export default function Home() {
                       {contacts.email}
                     </p>
                     <div className="border rounded text-center p-4 mt-4">
-                      <h3 className="fw-bold mb-4">Need Any Help?</h3>
+                      <h3 className="fw-bold mb-4">{$t[locale].contacts.form.need_help}</h3>
                       <a className="btn btn-primary py-3 px-5" href="">
-                        Let`s Chat
+                      {$t[locale].contacts.form.lets_chat}
                       </a>
                     </div>
                   </div>
