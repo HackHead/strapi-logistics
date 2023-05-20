@@ -194,12 +194,13 @@ export default function Home() {
                       <i className="fa fa-envelope text-primary me-3" />
                       {contacts.email}
                     </p>
-                    <div className="border rounded text-center p-4 mt-4">
+                    {/* кнопка "давайте пообщаемся" */}
+                    {/* <div className="border rounded text-center p-4 mt-4">
                       <h3 className="fw-bold mb-4">{$t[locale].contacts.form.need_help}</h3>
                       <a className="btn btn-primary py-3 px-5" href="">
                       {$t[locale].contacts.form.lets_chat}
                       </a>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
