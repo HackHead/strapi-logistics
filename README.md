@@ -13,7 +13,7 @@ git clone https://github.com/HackHead/strapi-logistics.git
 ### Подготовка приложения Next.js:
 
 1. Из директории `strapi-logistics/` перейдите в папку `client`:
-
+2. Cкопируйте файл `.env.local` переименуйте копию в  `.env`:
 ```
 cd client
 yarn
