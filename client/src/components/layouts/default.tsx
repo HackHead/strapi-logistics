@@ -13,6 +13,7 @@ const DefaultLayout = ({ children }: { children: ReactNode }) => {
           <a
             href="#"
             className="btn btn-lg btn-secondary btn-lg-square back-to-top"
+            style={{zIndex: 10}}
           >
             <i className="bi bi-arrow-up" />
           </a>

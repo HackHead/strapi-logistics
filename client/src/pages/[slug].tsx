@@ -5,6 +5,7 @@ import Head from 'next/head';
 import DefaultLayout from '@/components/layouts/default';
 import Hero from '@/components/organisms/hero';
 import { Crumb } from '@/components/molecules/Breacrumbs';
+import { useRouter } from 'next/router';
 
 // Этот компонент будет генерироваться динамически на основании данных полученых из страпи например:
 // Пользователь переходит на страницу yousite.com/PerevozkaGruzov в браузере, next.js приложение обращается
@@ -72,8 +73,18 @@ const Page = ({
   body,
   crumbs,
   slug,
-  keywords
+  keywords,
+  url
 }: PageAttibutes) => {
+  const router = useRouter();
+  console.log(url)
+  if (typeof window !== 'undefined' ){
+    if (!url) {
+      // Redirect to the index page if the page attributes are not found
+      router.push('/');
+      return null;
+    }
+  }
   // Эта функция рекурсивно пробегаем по объекту навигации который мы возвращаем из функции getServerSideProps
   // и генерирует одномерный мессив объектов который будет в последующем преобразован в компонент breadcrumbs
   const findAncestors = (obj: any[], url: string) => {
@@ -154,7 +165,8 @@ const Page = ({
 };
 
 export async function getServerSideProps({ query, locale }: Query) {
-  const {NEXT_PUBLIC_API_URL} = process.env
+  try {
+    const {NEXT_PUBLIC_API_URL} = process.env
   // ИЗ строки браузера получаем url и передаем его константе slug
   // он будет использоваться при обращении к страпи
   const slug = `/${query?.slug}` || '';
@@ -168,13 +180,6 @@ export async function getServerSideProps({ query, locale }: Query) {
   // Из меню которые мы получили вытягиваем только те данные которые нам будут нужны для преобразования
   // json в html
   const crumbs = strapiMenu.data.data[0].attributes.items.data;
-
-  // Если пользователь обратился по адресу на котором нет страницы - отправляем его на 404 страницу
-  if (!res.data?.data || !res.data?.data[0]?.attributes) {
-    return {
-      notFound: true,
-    };
-  }
 
   const { seo_title, seo_description, page_title, url, body, keywords }: PageAttibutes = res.data?.data[0].attributes;
   
@@ -200,6 +205,20 @@ export async function getServerSideProps({ query, locale }: Query) {
       keywords
     },
   };
+  } catch (error) {
+    return {
+      props: {
+        seo_title: '',
+        seo_description: '',
+        page_title: '',
+        url: '',
+        body: '',
+        crumbs: '',
+        slug: '',
+        keywords: ''
+      },
+    };
+  }
 }
 
 export default Page;

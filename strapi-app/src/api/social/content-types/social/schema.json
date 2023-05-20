@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "socials",
+  "info": {
+    "singularName": "social",
+    "pluralName": "socials",
+    "displayName": "Socials",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "facebook": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "skype": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "viber": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "telegram": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "whatsup": {
+      "pluginOptions": {},
+      "type": "string"
+    }
+  }
+}
