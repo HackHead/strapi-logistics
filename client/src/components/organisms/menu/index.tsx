@@ -1,13 +1,19 @@
 // @ts-nocheck
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
+import $t from '@/locale/global';
+import Toggler from '@/components/atoms/Toggler';
 
 interface SubmenuState {
   [id: number]: number | null; // хранить id последнего открытого подменю
 }
 
+
 function Menu({ data, show }) {
   const [openSubmenu, setOpenSubmenu] = useState<SubmenuState>({});
+  const router = useRouter();
+  const locale = router.locale;
 
   // Эта функция используется для того чтобы открывать и закрывать подменю
   const toggleSubmenu = (parentId: number, id: number) => {
@@ -20,9 +26,9 @@ function Menu({ data, show }) {
     }
   };
   useEffect(() => {
-    const handleClick = (event) => {
-      if(!event.target.classList.contains('navpart')){
-        setOpenSubmenu({ });
+    const handleClick = event => {
+      if (!event.target.classList.contains('navpart')) {
+        setOpenSubmenu({});
       }
     };
 
@@ -33,7 +39,7 @@ function Menu({ data, show }) {
       document.body.removeEventListener('click', handleClick);
     };
   }, []);
-  
+
   const renderMenuItem = (item, parentId: number | null) => {
     if (item?.attributes?.children?.data.length > 0) {
       // проверить, является ли текущий элемент последним открытым подменю на этом уровне вложенности
@@ -49,7 +55,7 @@ function Menu({ data, show }) {
             style={{ cursor: 'pointer' }}
             onClick={() => toggleSubmenu(parentId, item.id)}
           >
-            {item.attributes.title}
+            {locale === 'ru' ? item.attributes.title  : item.attributes[`title_${locale}`]}
           </span>
           {isOpen && (
             <div
@@ -65,30 +71,38 @@ function Menu({ data, show }) {
       );
     } else {
       return (
-        <Link href={item.attributes.url} className={`nav-link navpart`} key={item.id}>
-          {item.attributes.title}
+        <Link
+          href={item.attributes.url}
+          className={`nav-link navpart`}
+          key={item.id}
+        >
+          {locale === 'ru' ? item.attributes.title  : item.attributes[`title_${locale}`]}
         </Link>
       );
     }
   };
 
   return (
+    <>
     <div
       className={`collapse navbar-collapse navpart ${show ? 'show' : ''}`}
       id="navbarCollapse"
     >
       {!!data && (
-        <div className="navbar-nav ms-auto py-0">
+        <div className="navbar-nav ms-auto py-0" >
           <Link href="/" className={`nav-item nav-link navpart`}>
-            Главная
+            {$t[locale].menu.main}
           </Link>
           {data.map(item => renderMenuItem(item, null))}
           <Link href="/contacts" className={`nav-item nav-link navpart`}>
-            Контакты
+          {$t[locale].menu.contacts}
+
           </Link>
+          <div className='flex justify-center align-center w-full mx-auto toggler-wrap'><Toggler/></div>
         </div>
       )}
     </div>
+    </>
   );
 }
 

@@ -1,0 +1,45 @@
+.toggler-container {
+  width: auto;
+  height: 34px;
+  border-radius: 1rem;
+  background: #ff0f10;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, .2);
+}
+.toggler-container button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: #fff;
+  z-index: 10;
+  font-size: 0.8rem;
+  transition: all .3s linear;
+  font-weight: bold;
+}
+.toggler-container button.active {
+  color: #ff0f10;
+}
+.toggler-container .switcher {
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  position: absolute;
+  top: 5px;
+  border-radius: 50%;
+  z-index: 1;
+  transition: all .3s linear;
+}
+.switcher.left {
+  left: calc(3px);
+}
+.switcher.center {
+  left: calc(33px);
+}
+.switcher.right {
+  left: calc(63px);
+}

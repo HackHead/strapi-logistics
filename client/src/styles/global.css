@@ -87,7 +87,6 @@ h6,
 
 /*** Navbar ***/
 
-
 .sticky-top.navbar-light .navbar-nav .nav-link {
   color: var(--dark) !important;
 }
@@ -386,7 +385,7 @@ h6,
   white-space: normal;
 }
 .navbar {
-  padding: 20px 3rem
+  padding: 20px 3rem;
 }
 .navbar-light .navbar-nav .nav-link {
   position: relative;
@@ -401,4 +400,19 @@ h6,
 }
 .navbar-light .nav-link {
   padding: 5px;
-} 
+}
+
+.sticky-top.navbar-light .navbar-nav .nav-link {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+.toggler-wrap {
+  padding-top: 4px;
+}
+.sticky-top .navbar-nav .toggler-wrap {
+  padding-top: 0 !important;
+}
+
+img {
+  max-width: 100% !important;
+}

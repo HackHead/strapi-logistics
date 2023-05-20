@@ -1,0 +1,29 @@
+{
+    "connection": "default",
+    "collectionName": "",
+    "info": {
+      "name": "Menus"
+    },
+    "options": {
+      "timestamps": true
+    },
+    "attributes": {
+      "slug": {
+        "type": "string",
+        "required": false
+      },
+      "createdAt": {
+        "type": "timestamp",
+        "autoCreatedAt": true
+      },
+      "title_en": {
+        "type": "string",
+        "required": true
+      },
+      "updatedAt": {
+        "type": "timestamp",
+        "autoUpdatedAt": true
+      }
+    }
+  }
+  

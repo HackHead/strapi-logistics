@@ -1,29 +1,10 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:1337/api';
+const STRAPI_BASE_URL = 'http://127.0.0.1:1337';
+  
 
 const server = axios.create({
-  baseURL: BASE_URL,
+  baseURL: `${STRAPI_BASE_URL}/api`,
 });
 
-const getFooterGenerall = async () => {
-  try {
-    const res = await server.get('/footer-generall');
-
-    return res.data;
-  } catch (error) {
-    throw new Error(`Во время получения произошла ошибка: ${error}`);
-  }
-};
-
-const getContacts = async () => {
-  try {
-    const res = await server.get('/contact');
-
-    return res.data;
-  } catch (error) {
-    throw new Error(`Во время получения произошла ошибка: ${error}`);
-  }
-};
-
-export { getFooterGenerall, getContacts, server };
+export { server, STRAPI_BASE_URL  };
