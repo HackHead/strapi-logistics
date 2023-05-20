@@ -11,8 +11,8 @@
     width: 75px;
     text-align: center;
     position: fixed;
-    right: 8%;
-    bottom: 90px;
+    right: 32px;
+    bottom: 150px;
     z-index: 999;
     transition: .3s ease-in-out;
     -webkit-animation: hoverWave linear 1s infinite;
