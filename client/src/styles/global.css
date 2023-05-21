@@ -117,7 +117,7 @@ h6,
   right: 100% !important;
   top: 100% !important;
 }
-@media (max-width: 991.98px) {
+@media (max-width: 1200px) {
   .nav-item.dropdown .dropdown-menu {
     position: relative;
     left: 0% !important;
@@ -149,7 +149,7 @@ h6,
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .navbar-light {
     position: absolute;
     width: 100%;
@@ -222,7 +222,7 @@ h6,
 }
 
 /*** Comparison ***/
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .comparison::after {
     position: absolute;
     content: '';
@@ -389,8 +389,8 @@ h6,
 }
 .navbar-light .navbar-nav .nav-link {
   position: relative;
-  padding: 10px 20px;
-  font-size: 15px;
+  padding: 10px 9px;
+  font-size: 14px;
   font-family: 'Montserrat', sans-serif;
   color: #ffffff;
   text-transform: uppercase;
