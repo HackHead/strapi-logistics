@@ -60,7 +60,7 @@ const Header = () => {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light ">
+    <nav className="navbar navbar-expand-xl navbar-light ">
       <Link href="/" className="navbar-brand p-0">
         <h1 className="m-0">
           <i className="fa fa-server me-3"></i>GreenHost
@@ -75,7 +75,6 @@ const Header = () => {
       >
         <span className="fa fa-bars"></span>
       </button>
-
       <Menu data={menus} show={showMenu} />
 
     </nav>
