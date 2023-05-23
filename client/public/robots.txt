@@ -1,2 +1,3 @@
 User-agent: *
 Sitemap: http://www.t-h-logistics.com/sitemap.xml
+Disallow: /official/
