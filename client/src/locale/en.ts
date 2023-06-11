@@ -2,7 +2,9 @@ export default {
 
     menu: {
         main: 'Home',
-        contacts: 'Contacts'
+        contacts: 'Contacts',
+        services: 'Services',
+        usefull: 'Usefull',
     },
     footer: {
         subscription: {
@@ -183,5 +185,11 @@ export default {
             need_help: 'Need any help?',
             lets_chat: 'Let`s chat',
         }
+    },
+    services: {
+        seo_title: 'Services',
+        seo_description: 'Description',
+        seo_keywords: 'KeyWord,KeyWord,KeyWord,KeyWord',
+        page_title: 'Services'
     }
 }

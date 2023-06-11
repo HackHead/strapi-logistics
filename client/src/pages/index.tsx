@@ -139,6 +139,7 @@ export default function Home() {
                       <div
                         className="row g-3 wow fadeInUp"
                         data-wow-delay="0.5s"
+                        style={{justifyContent: 'center'}}
                       >
                         <div className="col-lg-2 col-md-3 col-sm-4 col-6 text-center">
                           <h5 className="fw-bold text-primary mb-1">.com</h5>

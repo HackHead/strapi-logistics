@@ -39,21 +39,15 @@ const Header = () => {
   const [menus, setMenus] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
   
-  const fetchMenus = async () => {
-    try {
+    const fetchMenus = async () => {
+      try {
 
-      const res = await server.get(
-        '/menus?nested&filters[slug][$eq]=main&populate=*'
-      );
-      console.log(res.data.data[0]?.attributes?.items.data)
-      setMenus(res.data.data[0]?.attributes?.items.data);
-    } catch (error) {
-      console.log(error);
-      throw new Error(
-        `Во время получения навигации произошла ошибка: ${error}`
-      );
-    }
-  };
+        const res = await server.get('/menus?nested&filters[slug][$eq]=main&populate=*');
+        setMenus(res.data.data[0]?.attributes?.items.data);
+      } catch (error) {
+        console.log(error)
+      }
+    };
 
   useEffect(() => {
     fetchMenus();
