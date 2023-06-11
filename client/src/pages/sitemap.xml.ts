@@ -4,7 +4,8 @@
 
 const {NEXT_PUBLIC_API_URL} = process.env;
 
-function generateSiteMap(posts) {
+
+function generateSiteMap(posts, tags) {
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <url>
@@ -19,6 +20,21 @@ function generateSiteMap(posts) {
        <loc>${NEXT_PUBLIC_API_URL}/ua</loc>
        <priority>1</priority>
      </url>
+
+     <url>
+        <loc>${NEXT_PUBLIC_API_URL}/en/services</loc>
+        <priority>1</priority>
+     </url>
+     <url>
+       <loc>${NEXT_PUBLIC_API_URL}/ru/services</loc>
+       <priority>1</priority>
+     </url>
+     <url>
+       <loc>${NEXT_PUBLIC_API_URL}/ua/services</loc>
+       <priority>1</priority>
+     </url>
+     
+     
      <url>
        <loc>${NEXT_PUBLIC_API_URL}/en/contacts</loc>
        <priority>0.8</priority>
@@ -41,6 +57,18 @@ function generateSiteMap(posts) {
      `;
        })
        .join('')}
+
+
+       ${tags
+        .map((page) => {
+          return `
+        <url>
+            <loc>${NEXT_PUBLIC_API_URL}/${page.attributes.locale === 'uk' ? 'ua' : page.attributes.locale}/service${page.attributes.url}</loc>
+            <priority>0.8</priority>
+        </url>
+      `;
+        })
+        .join('')}
    </urlset>
  `;
 }
@@ -50,18 +78,29 @@ function SiteMap() {
 }
 
 export async function getServerSideProps({ res }) {
-  const request = await fetch(`${NEXT_PUBLIC_API_URL}/api/pages?locale=all`);
-  const posts = await request.json();
+  try {
+    const request = await fetch(`${NEXT_PUBLIC_API_URL}/api/pages?locale=all`);
+    const posts = await request.json();
 
-  const sitemap = generateSiteMap(posts.data);
+    const req2 = await fetch(`${NEXT_PUBLIC_API_URL}/api/page-seos?locale=all`);
+    const tags = await req2.json();
+    
+    const sitemap = generateSiteMap(posts.data, tags.data);
 
-  res.setHeader('Content-Type', 'text/xml');
-  res.write(sitemap);
-  res.end();
+    res.setHeader('Content-Type', 'text/xml');
+    res.write(sitemap);
+    res.end();
 
-  return {
-    props: {},
-  };
+    return {
+      props: {},
+    };
+  } catch (error) {
+    return {
+      props: {
+        
+      }
+    }
+  }
 }
 
 export default SiteMap;

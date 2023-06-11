@@ -1,7 +1,9 @@
 export default {
     menu: {
         main: 'Главная',
-        contacts: 'Контакты'
+        contacts: 'Контакты',
+        services: "Услуги",
+        usefull: 'Полезное',
     },
     footer: {
         subscription: {
@@ -182,5 +184,11 @@ export default {
             need_help: 'Нужна помощь?',
             lets_chat: 'Давайте пообщаемся',
         }
+    },
+    services: {
+        seo_title: 'Услуги',
+        seo_description: 'Description',
+        seo_keywords: 'KeyWord,KeyWord,KeyWord,KeyWord',
+        page_title: 'Services'
     }
 }

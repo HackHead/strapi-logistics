@@ -4,4 +4,5 @@ module.exports = {
     maxLimit: 100,
     withCount: true,
   },
+  prefix: '/aps'
 };
