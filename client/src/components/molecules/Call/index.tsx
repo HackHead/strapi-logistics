@@ -50,19 +50,19 @@ const Call = () => {
         </svg>
       </div>
       <div className="social-icons callback-icons">
-        <a href={socialData.facebook} className="icon1 callback-icon">
+        <a href={socialData.facebook} className="icon1 callback-icon" >
           <Image src="/img/face.png" alt="Facebook" width={34} height={34} />
         </a>
-        <a href={socialData.viber} className="icon2 callback-icon">
+        <a href={socialData.viber} className="icon2 callback-icon" >
           <Image src="/img/viber.png" alt="Twitter" width={34} height={34} />
         </a>
-        <a href={socialData.telegram} className="icon3 callback-icon">
+        <a href={socialData.telegram} className="icon3 callback-icon" >
           <Image src="/img/telegram.png" alt="Instagram" width={34} height={34} />
         </a>
-        <a href={socialData.skype} className="icon4 callback-icon">
+        <a href={socialData.skype} className="icon4 callback-icon" >
           <Image src="/img/skype.png" alt="Twitter" width={34} height={34} />
         </a>
-        <a href={socialData.whatsup} className="icon5 callback-icon">
+        <a href={socialData.whatsup} className="icon5 callback-icon" >
           <Image src="/img/what.png" alt="Instagram" width={34} height={34} />
         </a>
       </div>

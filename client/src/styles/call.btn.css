@@ -35,6 +35,7 @@
     background: rgba(39, 189, 227, 0);
     transition: all .4s linear;
     z-index: 888;
+    pointer-events: none;
 }
 
 .callback-icon {
@@ -50,7 +51,12 @@
     transform: translate(0, 90px);
     transition: all .2s linear;
     opacity: 0;
-}
+    pointer-events: none;
+    }
+    .callback-bt.hovered .callback-icon {
+        pointer-events: all;
+        }
+   
   .callback-bt.hovered .callback-icon.icon1 {
     transform: rotate(-1deg);
     transition: all .2s linear;
