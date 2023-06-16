@@ -354,7 +354,7 @@ h6,
 }
 
 .footer .copyright {
-  padding: 25px 0;
+  padding: 16px 0 8px 0;
   font-size: 15px;
   border-top: 1px solid rgba(256, 256, 256, 0.3);
 }
@@ -415,4 +415,10 @@ h6,
 
 img {
   max-width: 100% !important;
+}
+
+@media screen and (max-width: 366px) {
+  .navbar {
+    padding: 20px 1rem;
+  }
 }

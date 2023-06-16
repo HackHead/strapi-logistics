@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import $t from '@/locale/global';
 import Toggler from '@/components/atoms/Toggler';
 import { server } from '@/http/index'
+import Switch from '@/pages/switch';
 
 interface SubmenuState {
   [id: number]: number | null; // хранить id последнего открытого подменю
@@ -62,7 +63,7 @@ function Menu({ data, show }) {
     if (item?.attributes?.children?.data.length > 0) {
       return item.attributes.children.data.some((child) => {
         const childUrl = child.attributes.url;
-        return allPages.some((page) => page.attributes.url === childUrl) || hasValidChildren(child);
+        return allPages.some((page) => page.attributes.url === childUrl) || hasValidChildren(child) || item?.attributes?.url === '/usefull'; 
       });
     }
     return false;
@@ -98,7 +99,7 @@ function Menu({ data, show }) {
           )}
         </div>
       );
-    } else if (allPages.some((page) => page.attributes.url === item.attributes.url)) {
+    } else if (allPages.some((page) => page.attributes.url === item.attributes.url || item.attributes.url === '/services')) {
       return (
         <Link
           href={item.attributes.url}
@@ -121,7 +122,7 @@ function Menu({ data, show }) {
               {$t[locale].menu.main}
             </Link>
            
-            <div className="nav-item dropdown" style={{ cursor: 'pointer' }} onClick={() => { setOpenSubmenu({ ...{}, [SERVICES_ID]: !openSubmenu[SERVICES_ID] });  }}>
+            {/* <div className="nav-item dropdown" style={{ cursor: 'pointer' }} onClick={() => { setOpenSubmenu({ ...{}, [SERVICES_ID]: !openSubmenu[SERVICES_ID] });  }}>
             <span className="nav-link dropdown-toggle navpart">
               {$t[locale].menu.usefull}
             </span>
@@ -130,12 +131,12 @@ function Menu({ data, show }) {
                 <Link href="/services" className="nav-link navpart">{$t[locale].menu.services}</Link>
               </div>
             }
-            </div>
+            </div> */}
             {data.map(item => renderMenuItem(item, null))}
             <Link href="/contacts" className={`nav-item nav-link navpart`}>
               {$t[locale].menu.contacts}
             </Link>
-            <div className='flex justify-center align-center w-full mx-auto toggler-wrap'><Toggler /></div>
+            <div className='flex justify-center align-center w-full mx-auto toggler-wrap'><Switch/></div>
           </div>
         )}
       </div>

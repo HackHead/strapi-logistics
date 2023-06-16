@@ -6,6 +6,7 @@ import DefaultLayout from '@/components/layouts/default';
 import Hero from '@/components/organisms/hero';
 import { Crumb } from '@/components/molecules/Breacrumbs';
 import { useRouter } from 'next/router';
+import $t from '@/locale/global'
 
 // Этот компонент будет генерироваться динамически на основании данных полученых из страпи например:
 // Пользователь переходит на страницу yousite.com/PerevozkaGruzov в браузере, next.js приложение обращается
@@ -77,6 +78,7 @@ const Page = ({
   url
 }: PageAttibutes) => {
   const router = useRouter();
+    const locale = router.locale;
   if (typeof window !== 'undefined' ){
     if (!url) {
       // Redirect to the index page if the page attributes are not found
@@ -140,10 +142,38 @@ const Page = ({
         <div className="container-xxl position-relative p-0">
           <DefaultLayout>
             {/* В компонент hero передаем заголовок страницы и данные которые там будут преобразованы в breadcrumb */}
-            <Hero
-              title={page_title}
-              crumbs={findAncestors(crumbs, `${slug}`)}
-            />
+            <div className="container-xxl position-relative p-0">
+              <div className="container-xxl py-5 bg-primary hero-header mb-5">
+                <div className="container mb-5 mt-5 py-2 px-lg-5 mt-md-1 mt-sm-1 mt-xs-0 mt-lg-5">
+                  <div className="row g-5 pt-1">
+                    <div className="col-12 text-center text-lg-start" style={{marginTop: '40px', marginBottom: '50px'}}>
+                      <h1 className="display-4 text-white animated slideInLeft">
+                      {page_title}
+                      </h1>
+                      <nav aria-label="breadcrumb">
+                        <ol className="breadcrumb justify-content-center justify-content-lg-start animated slideInLeft">
+                          <li className="breadcrumb-item">
+                            <a className="text-white" href="#">
+                            {$t[locale].menu.main}
+                            </a>
+                          </li>
+                          <li className="breadcrumb-item">
+                            <a className="text-white" href="#">
+                            {$t[locale].menu.services}
+                            </a>
+                          </li>
+                          <li className="breadcrumb-item">
+                            <a className="text-white" href="#">
+                            {page_title}
+                            </a>
+                          </li>
+                        </ol>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             {/* 
               В этом блоке будут помещены и отрендерены все данные из body. Body - это поле в страпи в коллекции Page.

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prod": "pm2 start npm --name 'next' -- start"
   },
   "dependencies": {
     "@types/node": "18.16.3",

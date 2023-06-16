@@ -1,11 +1,12 @@
   import axios from 'axios';
+import getConfig from 'next/config';
 
-  const STRAPI_BASE_URL = 'http://127.0.0.1:1337';
 
-  console.log(`${STRAPI_BASE_URL}/api`)
-
+  const { publicRuntimeConfig } = getConfig();
+  const { NEXT_STRAPI_API_URL } = publicRuntimeConfig;
+  
   const server = axios.create({
-    baseURL: `${STRAPI_BASE_URL}/api`,
+    baseURL: `${NEXT_STRAPI_API_URL}`,
   });
 
-  export { server, STRAPI_BASE_URL  };
+  export { server, NEXT_STRAPI_API_URL  };

@@ -28,7 +28,7 @@ export default function Home() {
         <div className="container-xxl position-relative p-0">
           <DefaultLayout>
             <div className="container-xxl py-5 bg-primary hero-header mb-5">
-              <div className="container my-5 py-5 px-lg-5">
+              <div className="container mb-5 mt-5 py-2 px-lg-5 mt-md-1 mt-sm-1 mt-xs-0 mt-lg-5">
                 <div className="row g-5">
                   <div className="col-lg-6 pt-5 text-center text-lg-start">
                     <h1 className="display-4 text-white mb-4 animated slideInLeft">
