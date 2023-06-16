@@ -1,4 +1,8 @@
 const nextConfig = {
+  publicRuntimeConfig: {
+    NEXT_STRAPI_API_URL: process.env.NEXT_STRAPI_API_URL,
+    NEXT_HOST: process.env.NEXT_HOST,
+  },
   reactStrictMode: true,
   swcMinify: false,
   i18n: {

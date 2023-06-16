@@ -42,7 +42,7 @@ const Call = () => {
   }
 
   return (
-    <div className="callback-bt" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div className={`callback-bt ${isHovered ? 'hovered' : ''}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onTouchStart={() => {isHovered ? handleMouseLeave() : handleMouseEnter()}} >
       <div className={`text-call ${isHovered ? 'hovered' : ''}`}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" className="w-6 h-6">
           <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />

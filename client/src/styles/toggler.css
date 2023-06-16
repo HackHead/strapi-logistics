@@ -43,3 +43,61 @@
 .switcher.right {
   left: calc(63px);
 }
+.switch {
+  position: relative;
+}
+.switch-options {
+  width: 90px;
+  height: 30px;
+  background: #ff0f10;
+  border-radius: 14px;
+  box-sizing: content-box;
+  padding: 0 3px 0 3px;
+}
+
+.switch-option {
+  display: inline-block;
+  color: #f8f8f8;
+  font-weight: 500;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  transition: all .2s linear;
+}
+.switch-options.left .switch-option.left {
+  transition: all .2s linear;
+  color: #ff0f10;
+}
+.switch-options.center .switch-option.center {
+  transition: all .2s linear;
+  color: #ff0f10;
+}
+.switch-options.right .switch-option.right {
+  transition: all .2s linear;
+  color: #ff0f10;
+}
+.mover {
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  z-index: 1;
+  transition: all .2s linear;
+}
+.mover.left {
+  left: 6px;
+}
+.mover.right {
+  left: 66px;
+}
+.mover.center {
+  left: 36px;
+}

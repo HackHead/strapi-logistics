@@ -88,7 +88,7 @@ const Footer = () => {
 
   const fetchContacts = async () => {
     try {
-      const res = await server.get(`/contact?locale=${locale}`);
+      const res = await server.get(`/contact`);
 
       setContacts(res.data?.data?.attributes);
     } catch (error) {
@@ -132,7 +132,7 @@ const Footer = () => {
       data-wow-delay="0.1s"
     >
       <div className="container py-5 px-lg-5">
-        <div className="row gy-5 gx-4 pt-5">
+        <div className="row gy-5 gx-4 pt-3">
           <div className="col-12">
             <h5 className="fw-bold text-white mb-4">
               {$t[locale].footer.subscription.title}
@@ -247,7 +247,7 @@ const Footer = () => {
       </div>
       <div className="container px-lg-5">
         <div className="copyright">
-          <div className="row">
+          <div className="row  gy-1">
             <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
               <span
                 dangerouslySetInnerHTML={{ __html: generall.copyright }}

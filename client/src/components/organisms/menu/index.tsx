@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import $t from '@/locale/global';
 import Toggler from '@/components/atoms/Toggler';
 import { server } from '@/http/index'
+import Switch from '@/pages/switch';
 
 interface SubmenuState {
   [id: number]: number | null; // хранить id последнего открытого подменю
@@ -135,7 +136,7 @@ function Menu({ data, show }) {
             <Link href="/contacts" className={`nav-item nav-link navpart`}>
               {$t[locale].menu.contacts}
             </Link>
-            <div className='flex justify-center align-center w-full mx-auto toggler-wrap'><Toggler /></div>
+            <div className='flex justify-center align-center w-full mx-auto toggler-wrap'><Switch/></div>
           </div>
         )}
       </div>

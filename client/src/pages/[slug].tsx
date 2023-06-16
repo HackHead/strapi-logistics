@@ -166,7 +166,7 @@ const Page = ({
 
 export async function getServerSideProps({ query, locale }: Query) {
   try {
-    const {NEXT_PUBLIC_API_URL} = process.env
+    const {NEXT_STRAPI_API_URL} = process.env
   // ИЗ строки браузера получаем url и передаем его константе slug
   // он будет использоваться при обращении к страпи
   const slug = `/${query?.slug}` || '';
@@ -189,7 +189,7 @@ export async function getServerSideProps({ query, locale }: Query) {
   });
 
   // Преобразуем ссылки на изображения в абсолютый путь
-  const bodyWithAbsoluteURLs = bodyWithoutSrcset.replace(/\/uploads\/([^"]+)/g, `${NEXT_PUBLIC_API_URL}/uploads/$1`);
+  const bodyWithAbsoluteURLs = bodyWithoutSrcset.replace(/\/uploads\/([^"]+)/g, `${NEXT_STRAPI_API_URL}/uploads/$1`);
   
   
   

@@ -19,10 +19,10 @@
     animation: hoverWave linear 1s infinite;
 }
 
-.callback-bt:hover {
+.callback-bt.hovered {
     border: 2px solid #38a3fd;
 }
-.callback-bt:hover .callback-icons {
+.callback-bt.hovered .callback-icons {
     transition: all .4s linear;
 }
 .callback-icons {
@@ -51,31 +51,31 @@
     transition: all .2s linear;
     opacity: 0;
 }
-  .callback-bt:hover .callback-icon.icon1 {
+  .callback-bt.hovered .callback-icon.icon1 {
     transform: rotate(-1deg);
     transition: all .2s linear;
     opacity: 1;
   }
   
-  .callback-bt:hover .callback-icon.icon2 {
+  .callback-bt.hovered .callback-icon.icon2 {
       transform: rotate(-90deg);
       transition: all .2s linear;
       opacity: 1;
     }
     
-    .callback-bt:hover .callback-icon.icon3 {
+    .callback-bt.hovered .callback-icon.icon3 {
         transform: rotate(-179deg);
         transition: all .2s linear;
         opacity: 1;
     }
     
-    .callback-bt:hover .callback-icon.icon4 {
+    .callback-bt.hovered .callback-icon.icon4 {
         transform: rotate(-45deg);
         transition: all .2s linear;
         opacity: 1;
     }
     
-    .callback-bt:hover .callback-icon.icon5 {
+    .callback-bt.hovered .callback-icon.icon5 {
         transform: rotate(-135deg);
         transition: all .2s linear;
         opacity: 1;

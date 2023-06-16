@@ -38,6 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
             $('.navbar').removeClass('sticky-top shadow-sm');
           }
         });
+       
         $(window).scroll(function () {
           if ($(this).scrollTop() > 300) {
             $('.back-to-top').fadeIn('slow');
