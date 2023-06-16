@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import $t from '@/locale/global';
-import Toggler from '@/components/atoms/Toggler';
 import { server } from '@/http/index'
 import Switch from '@/pages/switch';
 
@@ -11,8 +10,7 @@ interface SubmenuState {
   [id: number]: number | null; // хранить id последнего открытого подменю
 }
 
-
-function Menu({ data, show }) {
+function Menu({ data, show, onTog }) {
   const [openSubmenu, setOpenSubmenu] = useState<SubmenuState>({});
   const [allPages, setAllPages] = useState([]);
 
@@ -46,19 +44,21 @@ function Menu({ data, show }) {
   useEffect(() => {
     fetchPages()
     const handleClick = event => {
-      if (!event.target.classList.contains('navpart')) {
-        setOpenSubmenu({});
+      if (!event.target.classList.contains('navpart') && !event.target.classList.contains('navpart')) {
+        onTog()
+        setOpenSubmenu({...{}});
       }
     };
 
     document.body.addEventListener('click', handleClick);
 
     return () => {
-      // Clean up the event listener when the component is unmounted
       document.body.removeEventListener('click', handleClick);
     };
   }, [router]);
-
+  useEffect(() => {
+    setOpenSubmenu({ ...{} });
+  }, [router])
   const hasValidChildren = (item) => {
     if (item?.attributes?.children?.data.length > 0) {
       return item.attributes.children.data.some((child) => {
