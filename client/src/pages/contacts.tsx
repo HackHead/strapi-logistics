@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 import { server } from '@/http';
 import Script from 'next/script';
 import { useRouter } from 'next/router';
-import $t from '@/locale/global'
+import $t from '@/locale/global';
 
 export interface Contacts {
   location: string;
@@ -38,12 +38,11 @@ export const initialContacts: Contacts = {
   publishedAt: '',
 };
 
-
 export default function Home() {
   const [contacts, setContacts] = useState<Contacts>(initialContacts);
   const router = useRouter();
   const locale = router.locale;
-  
+
   // Функция которая делает запрос к страпи для получения контактов
   const fetchContacts = async () => {
     try {
@@ -63,8 +62,11 @@ export default function Home() {
     <>
       <Head>
         <title>{$t[locale].contacts.seo_title}</title>
-        <meta name="description" content={$t[locale].contacts.seo_description} />
-        <meta name="keywords" content={$t[locale].contacts.seo_keywords}/>
+        <meta
+          name="description"
+          content={$t[locale].contacts.seo_description}
+        />
+        <meta name="keywords" content={$t[locale].contacts.seo_keywords} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -79,20 +81,23 @@ export default function Home() {
               <div className="container-xxl py-5 bg-primary hero-header mb-5">
                 <div className="container mb-5 mt-5 py-2 px-lg-5 mt-md-1 mt-sm-1 mt-xs-0 mt-lg-5">
                   <div className="row g-5 pt-1">
-                    <div className="col-12 text-center text-lg-start" style={{marginTop: '40px', marginBottom: '50px'}}>
+                    <div
+                      className="col-12 text-center text-lg-start"
+                      style={{ marginTop: '40px', marginBottom: '50px' }}
+                    >
                       <h1 className="display-4 text-white animated slideInLeft">
-                      {$t[locale].menu.contacts}
+                        {$t[locale].menu.contacts}
                       </h1>
                       <nav aria-label="breadcrumb">
                         <ol className="breadcrumb justify-content-center justify-content-lg-start animated slideInLeft">
                           <li className="breadcrumb-item">
                             <a className="text-white" href="#">
-                            {$t[locale].menu.main}
+                              {$t[locale].menu.main}
                             </a>
                           </li>
                           <li className="breadcrumb-item">
                             <a className="text-white" href="#">
-                            {$t[locale].menu.contacts}
+                              {$t[locale].menu.contacts}
                             </a>
                           </li>
                         </ol>
@@ -126,7 +131,9 @@ export default function Home() {
                                 id="name"
                                 placeholder="Your Name"
                               />
-                              <label htmlFor="name">{$t[locale].contacts.form.name}</label>
+                              <label htmlFor="name">
+                                {$t[locale].contacts.form.name}
+                              </label>
                             </div>
                           </div>
                           <div className="col-md-6">
@@ -137,7 +144,9 @@ export default function Home() {
                                 id="email"
                                 placeholder="Your Email"
                               />
-                              <label htmlFor="email">{$t[locale].contacts.form.email}</label>
+                              <label htmlFor="email">
+                                {$t[locale].contacts.form.email}
+                              </label>
                             </div>
                           </div>
                           <div className="col-12">
@@ -148,7 +157,9 @@ export default function Home() {
                                 id="subject"
                                 placeholder="Subject"
                               />
-                              <label htmlFor="subject">{$t[locale].contacts.form.subject}</label>
+                              <label htmlFor="subject">
+                                {$t[locale].contacts.form.subject}
+                              </label>
                             </div>
                           </div>
                           <div className="col-12">
@@ -160,7 +171,9 @@ export default function Home() {
                                 style={{ height: 150 }}
                                 defaultValue={''}
                               />
-                              <label htmlFor="message">{$t[locale].contacts.form.message}</label>
+                              <label htmlFor="message">
+                                {$t[locale].contacts.form.message}
+                              </label>
                             </div>
                           </div>
                           <div className="col-12">
@@ -180,7 +193,9 @@ export default function Home() {
                     data-wow-delay="0.5s"
                   >
                     <div className="section-title position-relative mx-auto mb-4 pb-4">
-                      <h3 className="fw-bold mb-0">{$t[locale].contacts.form.customer_support}</h3>
+                      <h3 className="fw-bold mb-0">
+                        {$t[locale].contacts.form.customer_support}
+                      </h3>
                     </div>
                     <p className="mb-2">
                       <i className="fa fa-map-marker-alt text-primary me-3" />

@@ -16,7 +16,7 @@ export default function Home() {
       <Head>
         <title>{$t[locale].home.seo_title}</title>
         <meta name="description" content={$t[locale].home.seo_description} />
-        <meta name="keywords" content={$t[locale].home.seo_keywords}/>
+        <meta name="keywords" content={$t[locale].home.seo_keywords} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -114,7 +114,9 @@ export default function Home() {
                         data-wow-delay="0.1s"
                         style={{ maxWidth: '600px' }}
                       >
-                        <h1 className="mb-3">{$t[locale].home.search_domain.title}</h1>
+                        <h1 className="mb-3">
+                          {$t[locale].home.search_domain.title}
+                        </h1>
                         <p className="mb-1">
                           {$t[locale].home.search_domain.paragraph}
                         </p>
@@ -139,23 +141,31 @@ export default function Home() {
                       <div
                         className="row g-3 wow fadeInUp"
                         data-wow-delay="0.5s"
-                        style={{justifyContent: 'center'}}
+                        style={{ justifyContent: 'center' }}
                       >
                         <div className="col-lg-2 col-md-3 col-sm-4 col-6 text-center">
                           <h5 className="fw-bold text-primary mb-1">.com</h5>
-                          <p className="mb-0">$9.99/{$t[locale].home.search_domain.year}</p>
+                          <p className="mb-0">
+                            $9.99/{$t[locale].home.search_domain.year}
+                          </p>
                         </div>
                         <div className="col-lg-2 col-md-3 col-sm-4 col-6 text-center">
                           <h5 className="fw-bold text-primary mb-1">.net</h5>
-                          <p className="mb-0">$9.99/{$t[locale].home.search_domain.year}</p>
+                          <p className="mb-0">
+                            $9.99/{$t[locale].home.search_domain.year}
+                          </p>
                         </div>
                         <div className="col-lg-2 col-md-3 col-sm-4 col-6 text-center">
                           <h5 className="fw-bold text-primary mb-1">.org</h5>
-                          <p className="mb-0">$9.99/{$t[locale].home.search_domain.year}</p>
+                          <p className="mb-0">
+                            $9.99/{$t[locale].home.search_domain.year}
+                          </p>
                         </div>
                         <div className="col-lg-2 col-md-3 col-sm-4 col-6 text-center">
                           <h5 className="fw-bold text-primary mb-1">.us</h5>
-                          <p className="mb-0">$9.99/{$t[locale].home.search_domain.year}</p>
+                          <p className="mb-0">
+                            $9.99/{$t[locale].home.search_domain.year}
+                          </p>
                         </div>
                         <div className="col-lg-2 col-md-3 col-sm-4 col-6 text-center">
                           <h5 className="fw-bold text-primary mb-1">.eu</h5>
@@ -178,7 +188,9 @@ export default function Home() {
                       data-wow-delay="0.1s"
                     >
                       <div className="section-title position-relative mb-4 pb-4">
-                        <h1 className="mb-2">{$t[locale].home.welcome.title}</h1>
+                        <h1 className="mb-2">
+                          {$t[locale].home.welcome.title}
+                        </h1>
                       </div>
                       <p className="mb-4">
                         {$t[locale].home.welcome.paragraph}
@@ -193,7 +205,9 @@ export default function Home() {
                             <h2 className="mb-1" data-toggle="counter-up">
                               1234
                             </h2>
-                            <p className="mb-0">{$t[locale].home.welcome.experts}</p>
+                            <p className="mb-0">
+                              {$t[locale].home.welcome.experts}
+                            </p>
                           </div>
                         </div>
                         <div
@@ -205,7 +219,9 @@ export default function Home() {
                             <h2 className="mb-1" data-toggle="counter-up">
                               1234
                             </h2>
-                            <p className="mb-0">{$t[locale].home.welcome.clients}</p>
+                            <p className="mb-0">
+                              {$t[locale].home.welcome.clients}
+                            </p>
                           </div>
                         </div>
                         <div
@@ -217,7 +233,9 @@ export default function Home() {
                             <h2 className="mb-1" data-toggle="counter-up">
                               1234
                             </h2>
-                            <p className="mb-0">{$t[locale].home.welcome.projects}</p>
+                            <p className="mb-0">
+                              {$t[locale].home.welcome.projects}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -240,11 +258,25 @@ export default function Home() {
                     style={{ maxWidth: '600px' }}
                   >
                     <h1 className="mb-3">{$t[locale].home.plans.title}</h1>
-                    <p className="mb-1">
-                      {$t[locale].home.plans.paragraph}
-                    </p>
+                    <p className="mb-1">{$t[locale].home.plans.paragraph}</p>
                   </div>
-                  <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam asperiores sed accusantium aspernatur animi eum eligendi! Autem, qui? Nihil, dignissimos perspiciatis. Assumenda fuga consequatur sunt, laborum quos sapiente mollitia deserunt itaque quia optio voluptate accusantium, a hic, unde aliquid reiciendis? Error inventore possimus praesentium dignissimos consequuntur sapiente, corrupti necessitatibus quam tempore molestiae! Sint accusamus similique rerum quos facilis commodi cupiditate veniam nisi suscipit, nesciunt neque accusantium dolorum blanditiis odio, aliquid tempora ea placeat dolores quis! Harum quibusdam ipsam cum repudiandae incidunt minus hic, quaerat optio distinctio ducimus nihil exercitationem explicabo, impedit dolorum, molestias excepturi omnis veniam. Numquam consectetur porro minima.</div>
+                  <div>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Aliquam asperiores sed accusantium aspernatur animi eum
+                    eligendi! Autem, qui? Nihil, dignissimos perspiciatis.
+                    Assumenda fuga consequatur sunt, laborum quos sapiente
+                    mollitia deserunt itaque quia optio voluptate accusantium, a
+                    hic, unde aliquid reiciendis? Error inventore possimus
+                    praesentium dignissimos consequuntur sapiente, corrupti
+                    necessitatibus quam tempore molestiae! Sint accusamus
+                    similique rerum quos facilis commodi cupiditate veniam nisi
+                    suscipit, nesciunt neque accusantium dolorum blanditiis
+                    odio, aliquid tempora ea placeat dolores quis! Harum
+                    quibusdam ipsam cum repudiandae incidunt minus hic, quaerat
+                    optio distinctio ducimus nihil exercitationem explicabo,
+                    impedit dolorum, molestias excepturi omnis veniam. Numquam
+                    consectetur porro minima.
+                  </div>
                 </div>
               </div>
               <div className="container-xxl py-5">
@@ -256,13 +288,15 @@ export default function Home() {
                   >
                     <h1 className="mb-3">{$t[locale].home.comparing.title}</h1>
                     <p className="mb-1">
-                    {$t[locale].home.comparing.paragraph}
+                      {$t[locale].home.comparing.paragraph}
                     </p>
                   </div>
                   <div className="row g-5 comparison position-relative">
                     <div className="col-lg-6 pe-lg-5">
                       <div className="section-title position-relative mx-auto mb-4 pb-4">
-                        <h3 className="fw-bold mb-0">{$t[locale].home.comparing.shared.title}</h3>
+                        <h3 className="fw-bold mb-0">
+                          {$t[locale].home.comparing.shared.title}
+                        </h3>
                       </div>
                       <div className="row gy-3 gx-5">
                         <div
@@ -270,17 +304,19 @@ export default function Home() {
                           data-wow-delay="0.1s"
                         >
                           <i className="fa fa-server fa-3x text-primary mb-3" />
-                          <h5 className="fw-bold">{$t[locale].home.comparing.shared.uptime.title}</h5>
-                          <p>
-                            {$t[locale].home.comparing.shared.uptime.desc}
-                          </p>
+                          <h5 className="fw-bold">
+                            {$t[locale].home.comparing.shared.uptime.title}
+                          </h5>
+                          <p>{$t[locale].home.comparing.shared.uptime.desc}</p>
                         </div>
                         <div
                           className="col-sm-6 wow fadeIn"
                           data-wow-delay="0.3s"
                         >
                           <i className="fa fa-shield-alt fa-3x text-primary mb-3" />
-                          <h5 className="fw-bold">{$t[locale].home.comparing.shared.security.title}</h5>
+                          <h5 className="fw-bold">
+                            {$t[locale].home.comparing.shared.security.title}
+                          </h5>
                           <p>
                             {$t[locale].home.comparing.shared.security.desc}
                           </p>
@@ -290,26 +326,28 @@ export default function Home() {
                           data-wow-delay="0.5s"
                         >
                           <i className="fa fa-cog fa-3x text-primary mb-3" />
-                          <h5 className="fw-bold">{$t[locale].home.comparing.shared.panel.title}</h5>
-                          <p>
-                            {$t[locale].home.comparing.shared.uptime.title}
-                          </p>
+                          <h5 className="fw-bold">
+                            {$t[locale].home.comparing.shared.panel.title}
+                          </h5>
+                          <p>{$t[locale].home.comparing.shared.uptime.title}</p>
                         </div>
                         <div
                           className="col-sm-6 wow fadeIn"
                           data-wow-delay="0.7s"
                         >
                           <i className="fa fa-headset fa-3x text-primary mb-3" />
-                          <h5 className="fw-bold">{$t[locale].home.comparing.shared.support.title}</h5>
-                          <p>
-                            {$t[locale].home.comparing.shared.support.desc}
-                          </p>
+                          <h5 className="fw-bold">
+                            {$t[locale].home.comparing.shared.support.title}
+                          </h5>
+                          <p>{$t[locale].home.comparing.shared.support.desc}</p>
                         </div>
                       </div>
                     </div>
                     <div className="col-lg-6 ps-lg-5">
                       <div className="section-title position-relative mx-auto mb-4 pb-4">
-                        <h3 className="fw-bold mb-0">{$t[locale].home.comparing.dedicated.title}</h3>
+                        <h3 className="fw-bold mb-0">
+                          {$t[locale].home.comparing.dedicated.title}
+                        </h3>
                       </div>
                       <div className="row gy-3 gx-5">
                         <div
@@ -317,7 +355,9 @@ export default function Home() {
                           data-wow-delay="0.1s"
                         >
                           <i className="fa fa-server fa-3x text-secondary mb-3" />
-                          <h5 className="fw-bold">{$t[locale].home.comparing.dedicated.uptime.title}</h5>
+                          <h5 className="fw-bold">
+                            {$t[locale].home.comparing.dedicated.uptime.title}
+                          </h5>
                           <p>
                             {$t[locale].home.comparing.dedicated.uptime.desc}
                           </p>
@@ -327,7 +367,9 @@ export default function Home() {
                           data-wow-delay="0.3s"
                         >
                           <i className="fa fa-shield-alt fa-3x text-secondary mb-3" />
-                          <h5 className="fw-bold">{$t[locale].home.comparing.dedicated.security.title}</h5>
+                          <h5 className="fw-bold">
+                            {$t[locale].home.comparing.dedicated.security.title}
+                          </h5>
                           <p>
                             {$t[locale].home.comparing.dedicated.security.desc}
                           </p>
@@ -337,7 +379,9 @@ export default function Home() {
                           data-wow-delay="0.5s"
                         >
                           <i className="fa fa-cog fa-3x text-secondary mb-3" />
-                          <h5 className="fw-bold">{$t[locale].home.comparing.dedicated.panel.title}</h5>
+                          <h5 className="fw-bold">
+                            {$t[locale].home.comparing.dedicated.panel.title}
+                          </h5>
                           <p>
                             {$t[locale].home.comparing.dedicated.panel.desc}
                           </p>
@@ -347,7 +391,9 @@ export default function Home() {
                           data-wow-delay="0.7s"
                         >
                           <i className="fa fa-headset fa-3x text-secondary mb-3" />
-                          <h5 className="fw-bold">{$t[locale].home.comparing.dedicated.support.title}</h5>
+                          <h5 className="fw-bold">
+                            {$t[locale].home.comparing.dedicated.support.title}
+                          </h5>
                           <p>
                             {$t[locale].home.comparing.dedicated.support.desc}
                           </p>
@@ -374,9 +420,7 @@ export default function Home() {
                       >
                         <i className="fa fa-quote-left text-white" />
                       </div>
-                      <p className="mt-3">
-                       {$t[locale].home.comments._1.body}
-                      </p>
+                      <p className="mt-3">{$t[locale].home.comments._1.body}</p>
                       <div className="d-flex align-items-center">
                         <img
                           className="img-fluid flex-shrink-0 rounded-circle"
@@ -384,7 +428,9 @@ export default function Home() {
                           style={{ width: '50px', height: '50px' }}
                         />
                         <div className="ps-3">
-                          <h6 className="fw-bold mb-1">{$t[locale].home.comments._1.client}</h6>
+                          <h6 className="fw-bold mb-1">
+                            {$t[locale].home.comments._1.client}
+                          </h6>
                           <small>{$t[locale].home.comments._1.job}</small>
                         </div>
                       </div>
@@ -400,9 +446,7 @@ export default function Home() {
                       >
                         <i className="fa fa-quote-left text-white" />
                       </div>
-                      <p className="mt-3">
-                        {$t[locale].home.comments._2.body}
-                      </p>
+                      <p className="mt-3">{$t[locale].home.comments._2.body}</p>
                       <div className="d-flex align-items-center">
                         <img
                           className="img-fluid flex-shrink-0 rounded-circle"
@@ -410,7 +454,9 @@ export default function Home() {
                           style={{ width: '50px', height: '50px' }}
                         />
                         <div className="ps-3">
-                          <h6 className="fw-bold mb-1">{$t[locale].home.comments._2.client}</h6>
+                          <h6 className="fw-bold mb-1">
+                            {$t[locale].home.comments._2.client}
+                          </h6>
                           <small>{$t[locale].home.comments._1.job}</small>
                         </div>
                       </div>
@@ -426,9 +472,7 @@ export default function Home() {
                       >
                         <i className="fa fa-quote-left text-white" />
                       </div>
-                      <p className="mt-3">
-                        {$t[locale].home.comments._3.body}
-                      </p>
+                      <p className="mt-3">{$t[locale].home.comments._3.body}</p>
                       <div className="d-flex align-items-center">
                         <img
                           className="img-fluid flex-shrink-0 rounded-circle"
@@ -436,7 +480,9 @@ export default function Home() {
                           style={{ width: '50px', height: '50px' }}
                         />
                         <div className="ps-3">
-                          <h6 className="fw-bold mb-1">{$t[locale].home.comments._3.client}</h6>
+                          <h6 className="fw-bold mb-1">
+                            {$t[locale].home.comments._3.client}
+                          </h6>
                           <small>{$t[locale].home.comments._3.job}</small>
                         </div>
                       </div>
@@ -452,9 +498,7 @@ export default function Home() {
                       >
                         <i className="fa fa-quote-left text-white" />
                       </div>
-                      <p className="mt-3">
-                        {$t[locale].home.comments._4.body}
-                      </p>
+                      <p className="mt-3">{$t[locale].home.comments._4.body}</p>
                       <div className="d-flex align-items-center">
                         <img
                           className="img-fluid flex-shrink-0 rounded-circle"
@@ -462,7 +506,9 @@ export default function Home() {
                           style={{ width: '50px', height: '50px' }}
                         />
                         <div className="ps-3">
-                          <h6 className="fw-bold mb-1">{$t[locale].home.comments._4.client}</h6>
+                          <h6 className="fw-bold mb-1">
+                            {$t[locale].home.comments._4.client}
+                          </h6>
                           <small>{$t[locale].home.comments._1.job}</small>
                         </div>
                       </div>
@@ -478,9 +524,7 @@ export default function Home() {
                     style={{ maxWidth: '600px' }}
                   >
                     <h1 className="mb-3">{$t[locale].home.team.title}</h1>
-                    <p className="mb-1">
-                    {$t[locale].home.team.paragraph}
-                    </p>
+                    <p className="mb-1">{$t[locale].home.team.paragraph}</p>
                   </div>
                   <div className="row g-4">
                     <div
@@ -494,11 +538,14 @@ export default function Home() {
                             src="img/team-1.jpg"
                             alt=""
                           />
-                          <h5 className="fw-bold mb-1">{$t[locale].home.team.members._1.name}</h5>
+                          <h5 className="fw-bold mb-1">
+                            {$t[locale].home.team.members._1.name}
+                          </h5>
                         </div>
                         <div className="d-flex justify-content-center bg-primary p-3">
-                          <small style={{color: '#fff', fontWeight: 'bold'}}>{$t[locale].home.team.members._1.job}</small>
-                          
+                          <small style={{ color: '#fff', fontWeight: 'bold' }}>
+                            {$t[locale].home.team.members._1.job}
+                          </small>
                         </div>
                       </div>
                     </div>
@@ -513,11 +560,14 @@ export default function Home() {
                             src="img/team-2.jpg"
                             alt=""
                           />
-                          <h5 className="fw-bold mb-1">{$t[locale].home.team.members._2.name}</h5>
+                          <h5 className="fw-bold mb-1">
+                            {$t[locale].home.team.members._2.name}
+                          </h5>
                         </div>
                         <div className="d-flex justify-content-center bg-primary p-3">
-                          <small style={{color: '#fff', fontWeight: 'bold'}}>{$t[locale].home.team.members._2.job}</small>
-                          
+                          <small style={{ color: '#fff', fontWeight: 'bold' }}>
+                            {$t[locale].home.team.members._2.job}
+                          </small>
                         </div>
                       </div>
                     </div>
@@ -532,11 +582,14 @@ export default function Home() {
                             src="img/team-3.jpg"
                             alt=""
                           />
-                          <h5 className="fw-bold mb-1">{$t[locale].home.team.members._3.name}</h5>
+                          <h5 className="fw-bold mb-1">
+                            {$t[locale].home.team.members._3.name}
+                          </h5>
                         </div>
                         <div className="d-flex justify-content-center bg-primary p-3">
-                          <small style={{color: '#fff', fontWeight: 'bold'}}>{$t[locale].home.team.members._3.job}</small>
-                          
+                          <small style={{ color: '#fff', fontWeight: 'bold' }}>
+                            {$t[locale].home.team.members._3.job}
+                          </small>
                         </div>
                       </div>
                     </div>
@@ -551,11 +604,14 @@ export default function Home() {
                             src="img/team-4.jpg"
                             alt=""
                           />
-                          <h5 className="fw-bold mb-1">{$t[locale].home.team.members._4.name}</h5>
+                          <h5 className="fw-bold mb-1">
+                            {$t[locale].home.team.members._4.name}
+                          </h5>
                         </div>
                         <div className="d-flex justify-content-center bg-primary p-3">
-                          <small style={{color: '#fff', fontWeight: 'bold'}}>{$t[locale].home.team.members._4.job}</small>
-                          
+                          <small style={{ color: '#fff', fontWeight: 'bold' }}>
+                            {$t[locale].home.team.members._4.job}
+                          </small>
                         </div>
                       </div>
                     </div>

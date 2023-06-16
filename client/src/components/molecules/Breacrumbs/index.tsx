@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useRouter } from 'next/router';
-import $t from '@/locale/global'
+import $t from '@/locale/global';
 
 export interface BreadcrumbsProps {
   crumbs: Crumb[];
@@ -18,7 +18,7 @@ export interface Crumb {
 const Breadcrumbs = ({ crumbs, pageTitle }: BreadcrumbsProps) => {
   const router = useRouter();
   const locale = router.locale;
-  
+
   return (
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb justify-content-center justify-content-lg-start animated slideInLeft">
@@ -26,7 +26,7 @@ const Breadcrumbs = ({ crumbs, pageTitle }: BreadcrumbsProps) => {
           {$t[locale].menu.main}
         </li>
         {crumbs.length ? (
-          crumbs.map((crumb) => {
+          crumbs.map(crumb => {
             return (
               <li
                 key={crumb.id}

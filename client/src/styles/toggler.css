@@ -9,7 +9,7 @@
   justify-content: space-between;
   position: relative;
   box-sizing: border-box;
-  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, .2);
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
 }
 .toggler-container button {
   border: none;
@@ -18,7 +18,7 @@
   color: #fff;
   z-index: 10;
   font-size: 0.8rem;
-  transition: all .3s linear;
+  transition: all 0.3s linear;
   font-weight: bold;
 }
 .toggler-container button.active {
@@ -32,7 +32,7 @@
   top: 5px;
   border-radius: 50%;
   z-index: 1;
-  transition: all .3s linear;
+  transition: all 0.3s linear;
 }
 .switcher.left {
   left: calc(3px);
@@ -68,18 +68,18 @@
   position: relative;
   z-index: 2;
   text-align: center;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
 }
 .switch-options.left .switch-option.left {
-  transition: all .2s linear;
+  transition: all 0.2s linear;
   color: #ff0f10;
 }
 .switch-options.center .switch-option.center {
-  transition: all .2s linear;
+  transition: all 0.2s linear;
   color: #ff0f10;
 }
 .switch-options.right .switch-option.right {
-  transition: all .2s linear;
+  transition: all 0.2s linear;
   color: #ff0f10;
 }
 .mover {
@@ -90,7 +90,7 @@
   position: absolute;
   top: 3px;
   z-index: 1;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
 }
 .mover.left {
   left: 6px;

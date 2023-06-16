@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import $t from '@/locale/global';
-import { server } from '@/http/index'
+import { server } from '@/http/index';
 import Switch from '@/pages/switch';
 
 interface SubmenuState {
@@ -15,7 +15,7 @@ function Menu({ data, show, onTog }) {
   const [allPages, setAllPages] = useState([]);
 
   const SERVICES_ID = 904765767;
- 
+
   const router = useRouter();
   const locale = router.locale;
 
@@ -24,7 +24,6 @@ function Menu({ data, show, onTog }) {
     if (openSubmenu[parentId] === id) {
       // закрыть текущее подменю, если оно уже открыто
       setOpenSubmenu({ ...openSubmenu, [parentId]: null });
-      
     } else {
       // открыть новое подменю
       setOpenSubmenu({ ...openSubmenu, [parentId]: id, [SERVICES_ID]: null });
@@ -35,35 +34,44 @@ function Menu({ data, show, onTog }) {
     try {
       const res = await server.get(`/pages?locale=${locale}`);
       const data = res.data.data;
-      setAllPages(data)
+      setAllPages(data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
-  
+  };
+
   useEffect(() => {
-    fetchPages()
+    fetchPages();
     const handleClick = event => {
-      if (!event.target.classList.contains('navpart') && !event.target.classList.contains('navpart')) {
-        onTog()
-        setOpenSubmenu({...{}});
+      if (
+        !event.target.classList.contains('navpart') &&
+        !event.target.classList.contains('navpart')
+      ) {
+        onTog();
+        setOpenSubmenu({ ...{} });
       }
     };
 
     document.body.addEventListener('click', handleClick);
+    document.body.addEventListener('touchstart', handleClick);
 
     return () => {
       document.body.removeEventListener('click', handleClick);
+      document.body.removeEventListener('touchstart', handleClick);
     };
   }, [router]);
   useEffect(() => {
     setOpenSubmenu({ ...{} });
-  }, [router])
-  const hasValidChildren = (item) => {
+  }, [router]);
+  const hasValidChildren = item => {
     if (item?.attributes?.children?.data.length > 0) {
-      return item.attributes.children.data.some((child) => {
+      return item.attributes.children.data.some(child => {
         const childUrl = child.attributes.url;
-        return allPages.some((page) => page.attributes.url === childUrl) || hasValidChildren(child) || item?.attributes?.url === '/usefull'; 
+        return (
+          allPages.some(page => page.attributes.url === childUrl) ||
+          hasValidChildren(child) ||
+          item?.attributes?.url === '/usefull'
+        );
       });
     }
     return false;
@@ -85,7 +93,9 @@ function Menu({ data, show, onTog }) {
             style={{ cursor: 'pointer' }}
             onClick={() => toggleSubmenu(parentId, item.id)}
           >
-            {locale === 'ru' ? item.attributes.title : item.attributes[`title_${locale}`]}
+            {locale === 'ru'
+              ? item.attributes.title
+              : item.attributes[`title_${locale}`]}
           </span>
           {isOpen && (
             <div
@@ -99,13 +109,24 @@ function Menu({ data, show, onTog }) {
           )}
         </div>
       );
-    } else if (allPages.some((page) => page.attributes.url === item.attributes.url || item.attributes.url === '/services')) {
+    } else if (
+      allPages.some(
+        page =>
+          page.attributes.url === item.attributes.url ||
+          item.attributes.url === '/services'
+      )
+    ) {
       return (
         <Link
           href={item.attributes.url}
           className={`nav-link navpart`}
           key={item.id}
-        > {locale === 'ru' ? item.attributes.title : item.attributes[`title_${locale}`]} </Link>
+        >
+          {' '}
+          {locale === 'ru'
+            ? item.attributes.title
+            : item.attributes[`title_${locale}`]}{' '}
+        </Link>
       );
     }
   };
@@ -117,11 +138,11 @@ function Menu({ data, show, onTog }) {
         id="navbarCollapse"
       >
         {!!data && (
-          <div className="navbar-nav ms-auto py-0" >
+          <div className="navbar-nav ms-auto py-0">
             <Link href="/" className={`nav-item nav-link navpart`}>
               {$t[locale].menu.main}
             </Link>
-           
+
             {/* <div className="nav-item dropdown" style={{ cursor: 'pointer' }} onClick={() => { setOpenSubmenu({ ...{}, [SERVICES_ID]: !openSubmenu[SERVICES_ID] });  }}>
             <span className="nav-link dropdown-toggle navpart">
               {$t[locale].menu.usefull}
@@ -136,7 +157,9 @@ function Menu({ data, show, onTog }) {
             <Link href="/contacts" className={`nav-item nav-link navpart`}>
               {$t[locale].menu.contacts}
             </Link>
-            <div className='flex justify-center align-center w-full mx-auto toggler-wrap'><Switch/></div>
+            <div className="flex justify-center align-center w-full mx-auto toggler-wrap">
+              <Switch />
+            </div>
           </div>
         )}
       </div>
