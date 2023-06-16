@@ -8,8 +8,8 @@ import '@/styles/bootstrap.min.css';
 import '@/styles/owl.carousel.min.css';
 import '@/styles/dropdown.css';
 import '@/styles/global.css';
-import '@/styles/toggler.css'
-import '@/styles/call.btn.css'
+import '@/styles/toggler.css';
+import '@/styles/call.btn.css';
 
 // @ts-ignore Типизации для данно библиотеки не существует
 import $ from 'jquery';
@@ -38,7 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
             $('.navbar').removeClass('sticky-top shadow-sm');
           }
         });
-       
+
         $(window).scroll(function () {
           if ($(this).scrollTop() > 300) {
             $('.back-to-top').fadeIn('slow');
@@ -108,7 +108,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Component {...pageProps} />
-      <Call/>
+      <Call />
     </>
   );
 }

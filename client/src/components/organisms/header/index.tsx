@@ -40,15 +40,17 @@ const Header = () => {
   const [menus, setMenus] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();
-  
-    const fetchMenus = async () => {
-      try {
-        const res = await server.get('/menus?nested&filters[slug][$eq]=main&populate=*');
-        setMenus(res.data.data[0]?.attributes?.items.data);
-      } catch (error) {
-        console.log(error)
-      }
-    };
+
+  const fetchMenus = async () => {
+    try {
+      const res = await server.get(
+        '/menus?nested&filters[slug][$eq]=main&populate=*'
+      );
+      setMenus(res.data.data[0]?.attributes?.items.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     fetchMenus();
@@ -69,8 +71,13 @@ const Header = () => {
       >
         <span className="fa fa-bars navpart"></span>
       </button>
-      <Menu data={menus} show={showMenu} onTog={() => {setShowMenu(false)}}/>
-
+      <Menu
+        data={menus}
+        show={showMenu}
+        onTog={() => {
+          setShowMenu(false);
+        }}
+      />
     </nav>
   );
 };

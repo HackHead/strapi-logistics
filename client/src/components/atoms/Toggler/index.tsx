@@ -1,6 +1,5 @@
-
-import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useRouter } from 'next/router';
+import { useEffect, useRef, useState } from 'react';
 
 export type TogglerPosition = 'left' | 'center' | 'right';
 
@@ -27,9 +26,24 @@ const Toggler = () => {
     <>
       <div className="toggler-container">
         <div className={`switcher ${pos}`}></div>
-        <button className={locale === 'uk' ? 'active' : ''} onClick={() => handleLocaleChange('uk')}>UA</button>
-        <button className={locale === 'ru' ? 'active' : ''} onClick={() => handleLocaleChange('ru')}>RU</button>
-        <button className={locale === 'en' ? 'active' : ''} onClick={() => handleLocaleChange('en')}>EN</button>
+        <button
+          className={locale === 'uk' ? 'active' : ''}
+          onClick={() => handleLocaleChange('uk')}
+        >
+          UA
+        </button>
+        <button
+          className={locale === 'ru' ? 'active' : ''}
+          onClick={() => handleLocaleChange('ru')}
+        >
+          RU
+        </button>
+        <button
+          className={locale === 'en' ? 'active' : ''}
+          onClick={() => handleLocaleChange('en')}
+        >
+          EN
+        </button>
       </div>
     </>
   );

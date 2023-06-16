@@ -1,10 +1,9 @@
 // @ts-nocheck
 import getConfig from 'next/config';
-import {server} from '../http/index'
+import { server } from '../http/index';
 
 const { publicRuntimeConfig } = getConfig();
 const { NEXT_HOST } = publicRuntimeConfig;
-
 
 function generateSiteMap(posts, tags) {
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -49,10 +48,12 @@ function generateSiteMap(posts, tags) {
        <priority>0.8</priority>
      </url>
      ${posts
-       .map((page) => {
+       .map(page => {
          return `
        <url>
-           <loc>${NEXT_HOST}/${page.attributes.locale === 'uk' ? 'ua' : page.attributes.locale}${page.attributes.url}</loc>
+           <loc>${NEXT_HOST}/${
+           page.attributes.locale === 'uk' ? 'ua' : page.attributes.locale
+         }${page.attributes.url}</loc>
            <priority>0.8</priority>
        </url>
      `;
@@ -61,15 +62,17 @@ function generateSiteMap(posts, tags) {
 
 
        ${tags
-        .map((page) => {
-          return `
+         .map(page => {
+           return `
         <url>
-            <loc>${NEXT_HOST}/${page.attributes.locale === 'uk' ? 'ua' : page.attributes.locale}/service${page.attributes.url}</loc>
+            <loc>${NEXT_HOST}/${
+             page.attributes.locale === 'uk' ? 'ua' : page.attributes.locale
+           }/service${page.attributes.url}</loc>
             <priority>0.8</priority>
         </url>
       `;
-        })
-        .join('')}
+         })
+         .join('')}
    </urlset>
  `;
 }
@@ -85,7 +88,7 @@ export async function getServerSideProps({ res }) {
 
     const req2 = await server.get(`/page-seos?locale=all`);
     const tags = await req2.data;
-    
+
     const sitemap = generateSiteMap(posts.data, tags.data);
 
     res.setHeader('Content-Type', 'text/xml');
@@ -96,12 +99,10 @@ export async function getServerSideProps({ res }) {
       props: {},
     };
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return {
-      props: {
-        
-      }
-    }
+      props: {},
+    };
   }
 }
 

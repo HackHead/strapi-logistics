@@ -1,2 +1,4 @@
-node_modules/
-.next/
+{
+    "ignorePatterns": ["**/*", "!**/*.html"],
+    "ignore": ["src/"]
+}

@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { initialContacts } from '@/pages/contacts';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import $t from '@/locale/global'
+import $t from '@/locale/global';
 
 export interface GenerallData {
   twitter_url: string;
@@ -154,7 +154,9 @@ const Footer = () => {
           <div className="col-lg-5 col-md-12">
             <div className="row gy-5 g-4">
               <div className="col-md-6">
-                <h5 className="fw-bold text-white mb-4">{$t[locale].footer.about.title}</h5>
+                <h5 className="fw-bold text-white mb-4">
+                  {$t[locale].footer.about.title}
+                </h5>
                 {nav1?.items?.map(item => {
                   return (
                     <a
@@ -162,13 +164,17 @@ const Footer = () => {
                       className="btn btn-link"
                       href={item.attributes.url}
                     >
-                      {locale === 'ru' ? item.attributes.title : item.attributes[`title_${locale}`]}
+                      {locale === 'ru'
+                        ? item.attributes.title
+                        : item.attributes[`title_${locale}`]}
                     </a>
                   );
                 })}
               </div>
               <div className="col-md-6">
-                <h5 className="fw-bold text-white mb-4">{$t[locale].footer.services.title}</h5>
+                <h5 className="fw-bold text-white mb-4">
+                  {$t[locale].footer.services.title}
+                </h5>
                 {nav2?.items?.map(item => {
                   return (
                     <a
@@ -176,7 +182,9 @@ const Footer = () => {
                       className="btn btn-link"
                       href={item.attributes.url}
                     >
-                      {locale === 'ru' ? item.attributes.title : item.attributes[`title_${locale}`]}
+                      {locale === 'ru'
+                        ? item.attributes.title
+                        : item.attributes[`title_${locale}`]}
                     </a>
                   );
                 })}
@@ -184,7 +192,9 @@ const Footer = () => {
             </div>
           </div>
           <div className="col-md-6 col-lg-3">
-            <h5 className="fw-bold text-white mb-4">{$t[locale].footer.get_in_touch.title}</h5>
+            <h5 className="fw-bold text-white mb-4">
+              {$t[locale].footer.get_in_touch.title}
+            </h5>
             <p className="mb-2">
               <i className="fa fa-map-marker-alt me-3" />
               {contacts.location}
@@ -231,7 +241,6 @@ const Footer = () => {
                 <i className="fab fa-linkedin-in" />
               </a>
             </div>
-
           </div>
 
           {/* Форма в футере */}

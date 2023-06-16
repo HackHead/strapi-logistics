@@ -74,11 +74,11 @@ const Page = ({
   crumbs,
   slug,
   keywords,
-  url
+  url,
 }: PageAttibutes) => {
   const router = useRouter();
-  console.log(url)
-  if (typeof window !== 'undefined' ){
+  console.log(url);
+  if (typeof window !== 'undefined') {
     if (!url) {
       // Redirect to the index page if the page attributes are not found
       router.push('/');
@@ -123,8 +123,7 @@ const Page = ({
     }
     return ancestors;
   };
-    
-  
+
   return (
     <>
       {/* 
@@ -166,45 +165,58 @@ const Page = ({
 
 export async function getServerSideProps({ query, locale }: Query) {
   try {
-    const {NEXT_STRAPI_API_URL} = process.env
-  // ИЗ строки браузера получаем url и передаем его константе slug
-  // он будет использоваться при обращении к страпи
-  const slug = `/${query?.slug}` || '';
-  // Выполняем два запроса к страпи - первый для получения основных данных страницы
-  // и второй для получения меню
-  const res = await server.get(`/pages?filters[url][$eq]=${slug}&locale=${locale}`);
-  const strapiMenu = await server.get(
-    `/menus?nested&filters[slug][$eq]=main&populate=*`
-  );
+    const { NEXT_STRAPI_API_URL } = process.env;
+    // ИЗ строки браузера получаем url и передаем его константе slug
+    // он будет использоваться при обращении к страпи
+    const slug = `/${query?.slug}` || '';
+    // Выполняем два запроса к страпи - первый для получения основных данных страницы
+    // и второй для получения меню
+    const res = await server.get(
+      `/pages?filters[url][$eq]=${slug}&locale=${locale}`
+    );
+    const strapiMenu = await server.get(
+      `/menus?nested&filters[slug][$eq]=main&populate=*`
+    );
 
-  // Из меню которые мы получили вытягиваем только те данные которые нам будут нужны для преобразования
-  // json в html
-  const crumbs = strapiMenu.data.data[0].attributes.items.data;
+    // Из меню которые мы получили вытягиваем только те данные которые нам будут нужны для преобразования
+    // json в html
+    const crumbs = strapiMenu.data.data[0].attributes.items.data;
 
-  const { seo_title, seo_description, page_title, url, body, keywords }: PageAttibutes = res.data?.data[0].attributes;
-  
-  // Удаляем тег srcset 
-  const bodyWithoutSrcset = body.replace(/<img[^>]+srcset=["'][^"']*["'](?:[^>]*)>/g, (match) => {
-    return match.replace(/srcset=["'][^"']*["'](?:[^>]*)>/g, '>');
-  });
-
-  // Преобразуем ссылки на изображения в абсолютый путь
-  const bodyWithAbsoluteURLs = bodyWithoutSrcset.replace(/\/uploads\/([^"]+)/g, `${NEXT_STRAPI_API_URL}/uploads/$1`);
-  
-  
-  
-  return {
-    props: {
+    const {
       seo_title,
       seo_description,
       page_title,
       url,
-      body: bodyWithAbsoluteURLs,
-      crumbs,
-      slug,
-      keywords
-    },
-  };
+      body,
+      keywords,
+    }: PageAttibutes = res.data?.data[0].attributes;
+
+    // Удаляем тег srcset
+    const bodyWithoutSrcset = body.replace(
+      /<img[^>]+srcset=["'][^"']*["'](?:[^>]*)>/g,
+      match => {
+        return match.replace(/srcset=["'][^"']*["'](?:[^>]*)>/g, '>');
+      }
+    );
+
+    // Преобразуем ссылки на изображения в абсолютый путь
+    const bodyWithAbsoluteURLs = bodyWithoutSrcset.replace(
+      /\/uploads\/([^"]+)/g,
+      `${NEXT_STRAPI_API_URL}/uploads/$1`
+    );
+
+    return {
+      props: {
+        seo_title,
+        seo_description,
+        page_title,
+        url,
+        body: bodyWithAbsoluteURLs,
+        crumbs,
+        slug,
+        keywords,
+      },
+    };
   } catch (error) {
     return {
       props: {
@@ -215,7 +227,7 @@ export async function getServerSideProps({ query, locale }: Query) {
         body: '',
         crumbs: '',
         slug: '',
-        keywords: ''
+        keywords: '',
       },
     };
   }

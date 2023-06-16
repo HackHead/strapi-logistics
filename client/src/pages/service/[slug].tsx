@@ -6,7 +6,7 @@ import DefaultLayout from '@/components/layouts/default';
 import Hero from '@/components/organisms/hero';
 import { Crumb } from '@/components/molecules/Breacrumbs';
 import { useRouter } from 'next/router';
-import $t from '@/locale/global'
+import $t from '@/locale/global';
 
 // Этот компонент будет генерироваться динамически на основании данных полученых из страпи например:
 // Пользователь переходит на страницу yousite.com/PerevozkaGruzov в браузере, next.js приложение обращается
@@ -75,11 +75,11 @@ const Page = ({
   crumbs,
   slug,
   keywords,
-  url
+  url,
 }: PageAttibutes) => {
   const router = useRouter();
-    const locale = router.locale;
-  if (typeof window !== 'undefined' ){
+  const locale = router.locale;
+  if (typeof window !== 'undefined') {
     if (!url) {
       // Redirect to the index page if the page attributes are not found
       router.push('/');
@@ -123,8 +123,7 @@ const Page = ({
     }
     return ancestors;
   };
-    
-  
+
   return (
     <>
       {/* 
@@ -146,25 +145,28 @@ const Page = ({
               <div className="container-xxl py-5 bg-primary hero-header mb-5">
                 <div className="container mb-5 mt-5 py-2 px-lg-5 mt-md-1 mt-sm-1 mt-xs-0 mt-lg-5">
                   <div className="row g-5 pt-1">
-                    <div className="col-12 text-center text-lg-start" style={{marginTop: '40px', marginBottom: '50px'}}>
+                    <div
+                      className="col-12 text-center text-lg-start"
+                      style={{ marginTop: '40px', marginBottom: '50px' }}
+                    >
                       <h1 className="display-4 text-white animated slideInLeft">
-                      {page_title}
+                        {page_title}
                       </h1>
                       <nav aria-label="breadcrumb">
                         <ol className="breadcrumb justify-content-center justify-content-lg-start animated slideInLeft">
                           <li className="breadcrumb-item">
                             <a className="text-white" href="#">
-                            {$t[locale].menu.main}
+                              {$t[locale].menu.main}
                             </a>
                           </li>
                           <li className="breadcrumb-item">
                             <a className="text-white" href="#">
-                            {$t[locale].menu.services}
+                              {$t[locale].menu.services}
                             </a>
                           </li>
                           <li className="breadcrumb-item">
                             <a className="text-white" href="#">
-                            {page_title}
+                              {page_title}
                             </a>
                           </li>
                         </ol>
@@ -194,49 +196,62 @@ const Page = ({
 
 export async function getServerSideProps({ query, locale }: Query) {
   try {
-    const {NEXT_PUBLIC_API_URL} = process.env
-  // ИЗ строки браузера получаем url и передаем его константе slug
-  // он будет использоваться при обращении к страпи
-  const slug = `/${query?.slug}` || '';
+    const { NEXT_PUBLIC_API_URL } = process.env;
+    // ИЗ строки браузера получаем url и передаем его константе slug
+    // он будет использоваться при обращении к страпи
+    const slug = `/${query?.slug}` || '';
 
-  console.log(slug)
-  // Выполняем два запроса к страпи - первый для получения основных данных страницы
-  // и второй для получения меню
-  const res = await server.get(`/page-seos?filters[url][$eq]=${slug}&locale=${locale}`);
-  const strapiMenu = await server.get(
-    `/menus?nested&filters[slug][$eq]=main&populate=*`
-  );
+    console.log(slug);
+    // Выполняем два запроса к страпи - первый для получения основных данных страницы
+    // и второй для получения меню
+    const res = await server.get(
+      `/page-seos?filters[url][$eq]=${slug}&locale=${locale}`
+    );
+    const strapiMenu = await server.get(
+      `/menus?nested&filters[slug][$eq]=main&populate=*`
+    );
 
-  // Из меню которые мы получили вытягиваем только те данные которые нам будут нужны для преобразования
-  // json в html
-  const crumbs = strapiMenu.data.data[0].attributes.items.data;
+    // Из меню которые мы получили вытягиваем только те данные которые нам будут нужны для преобразования
+    // json в html
+    const crumbs = strapiMenu.data.data[0].attributes.items.data;
 
-  console.log(res.data.data[0].attributes)
-  
-  const { seo_title, seo_description, page_title, url, body, keywords }: PageAttibutes = res.data?.data[0].attributes;
-  
-  // Удаляем тег srcset 
-  const bodyWithoutSrcset = body.replace(/<img[^>]+srcset=["'][^"']*["'](?:[^>]*)>/g, (match) => {
-    return match.replace(/srcset=["'][^"']*["'](?:[^>]*)>/g, '>');
-  });
+    console.log(res.data.data[0].attributes);
 
-  // Преобразуем ссылки на изображения в абсолютый путь
-  const bodyWithAbsoluteURLs = bodyWithoutSrcset.replace(/\/uploads\/([^"]+)/g, `${NEXT_PUBLIC_API_URL}/uploads/$1`);
-  
-  
-  
-  return {
-    props: {
+    const {
       seo_title,
       seo_description,
       page_title,
       url,
-      body: bodyWithAbsoluteURLs,
-      crumbs,
-      slug,
-      keywords
-    },
-  };
+      body,
+      keywords,
+    }: PageAttibutes = res.data?.data[0].attributes;
+
+    // Удаляем тег srcset
+    const bodyWithoutSrcset = body.replace(
+      /<img[^>]+srcset=["'][^"']*["'](?:[^>]*)>/g,
+      match => {
+        return match.replace(/srcset=["'][^"']*["'](?:[^>]*)>/g, '>');
+      }
+    );
+
+    // Преобразуем ссылки на изображения в абсолютый путь
+    const bodyWithAbsoluteURLs = bodyWithoutSrcset.replace(
+      /\/uploads\/([^"]+)/g,
+      `${NEXT_PUBLIC_API_URL}/uploads/$1`
+    );
+
+    return {
+      props: {
+        seo_title,
+        seo_description,
+        page_title,
+        url,
+        body: bodyWithAbsoluteURLs,
+        crumbs,
+        slug,
+        keywords,
+      },
+    };
   } catch (error) {
     return {
       props: {
@@ -247,7 +262,7 @@ export async function getServerSideProps({ query, locale }: Query) {
         body: '',
         crumbs: '',
         slug: '',
-        keywords: ''
+        keywords: '',
       },
     };
   }
