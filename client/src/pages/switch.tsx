@@ -15,7 +15,7 @@ const Switch = () => {
   };
 
   useEffect(() => {
-    if (locale === 'ua') {
+    if (locale === 'uk') {
       setPosition('left');
     } else if (locale === 'ru') {
       setPosition('center');
