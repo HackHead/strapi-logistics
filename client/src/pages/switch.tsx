@@ -5,17 +5,17 @@ export type TogglePosition = 'left' | 'center' | 'right';
 
 const Switch = () => {
   const router = useRouter();
-  const locale = router.locale;
+  const locale = router.locale === 'ua' ? 'uk' : router.locale;
   const [position, setPosition] = useState<TogglePosition>('left');
 
   const handleClick = (position: TogglePosition) => {
     const locale =
-      position === 'left' ? 'uk' : position === 'right' ? 'en' : 'ru';
+      position === 'left' ? 'ua' : position === 'right' ? 'en' : 'ru';
     router.push(router.pathname, router.asPath, { locale });
   };
 
   useEffect(() => {
-    if (locale === 'uk') {
+    if (locale === 'ua') {
       setPosition('left');
     } else if (locale === 'ru') {
       setPosition('center');
@@ -26,23 +26,23 @@ const Switch = () => {
 
   return (
     <div>
-      <div className="switch">
-        <div className={`switch-options ${position}`}>
+      <div className="switch navpart">
+        <div className={`switch-options navpart ${position}`}>
           <div
             onClick={() => handleClick('left')}
-            className="text-monospace switch-option left"
+            className="text-monospace switch-option left navpart"
           >
             UA
           </div>
           <div
             onClick={() => handleClick('center')}
-            className="text-monospace switch-option center"
+            className="text-monospace switch-option center navpart"
           >
             RU
           </div>
           <div
             onClick={() => handleClick('right')}
-            className="text-monospace switch-option right"
+            className="text-monospace switch-option right navpart"
           >
             EN
           </div>

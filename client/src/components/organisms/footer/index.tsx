@@ -52,7 +52,7 @@ export interface NavigationData {
 
 const Footer = () => {
   const router = useRouter();
-  const locale = router.locale;
+  const locale = router.locale === 'ua' ? 'uk' : router.locale;
 
   const [generall, setGenerall] = useState<GenerallData>({
     twitter_url: '',

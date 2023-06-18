@@ -17,7 +17,7 @@ function Menu({ data, show, onTog }) {
   const SERVICES_ID = 904765767;
 
   const router = useRouter();
-  const locale = router.locale;
+  const locale = router.locale === 'ua' ? 'uk' : router.locale;
 
   // Эта функция используется для того чтобы открывать и закрывать подменю
   const toggleSubmenu = (parentId: number, id: number) => {
@@ -43,8 +43,8 @@ function Menu({ data, show, onTog }) {
   useEffect(() => {
     fetchPages();
     const handleClick = event => {
+      console.log(event.target)
       if (
-        !event.target.classList.contains('navpart') &&
         !event.target.classList.contains('navpart')
       ) {
         onTog();

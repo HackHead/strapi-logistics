@@ -41,7 +41,7 @@ export const initialContacts: Contacts = {
 export default function Home() {
   const [contacts, setContacts] = useState<Contacts>(initialContacts);
   const router = useRouter();
-  const locale = router.locale;
+  const locale = router.locale === 'ua' ? 'uk' : router.locale;
 
   // Функция которая делает запрос к страпи для получения контактов
   const fetchContacts = async () => {

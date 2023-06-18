@@ -7,6 +7,7 @@ import Hero from '@/components/organisms/hero';
 import { Crumb } from '@/components/molecules/Breacrumbs';
 import { useRouter } from 'next/router';
 import $t from '@/locale/global';
+import { useState, useEffect } from 'react';
 
 // Этот компонент будет генерироваться динамически на основании данных полученых из страпи например:
 // Пользователь переходит на страницу yousite.com/PerevozkaGruzov в браузере, next.js приложение обращается
@@ -78,7 +79,7 @@ const Page = ({
   url,
 }: PageAttibutes) => {
   const router = useRouter();
-  const locale = router.locale;
+  const locale = router.locale === 'ua' ? 'uk' : router.locale;
   if (typeof window !== 'undefined') {
     if (!url) {
       // Redirect to the index page if the page attributes are not found
@@ -123,8 +124,14 @@ const Page = ({
     }
     return ancestors;
   };
-
+  const [updTtitle, setTitle] = useState(page_title);
+  useEffect(() => {
+    if(page_title){
+      setTitle(`${page_title.slice(0,75)}...`)
+    }
+  }, [])
   return (
+    
     <>
       {/* 
         head - это компонент который предоставляет нам next.js сюда вы можете прописывать разные мета теги,
@@ -149,8 +156,8 @@ const Page = ({
                       className="col-12 text-center text-lg-start"
                       style={{ marginTop: '40px', marginBottom: '50px' }}
                     >
-                      <h1 className="display-4 text-white animated slideInLeft">
-                        {page_title}
+                      <h1 className="display-5 text-white animated slideInLeft">
+                        {updTtitle}
                       </h1>
                       <nav aria-label="breadcrumb">
                         <ol className="breadcrumb justify-content-center justify-content-lg-start animated slideInLeft">
@@ -166,7 +173,7 @@ const Page = ({
                           </li>
                           <li className="breadcrumb-item">
                             <a className="text-white" href="#">
-                              {page_title}
+                              {updTtitle}
                             </a>
                           </li>
                         </ol>
@@ -202,10 +209,11 @@ export async function getServerSideProps({ query, locale }: Query) {
     const slug = `/${query?.slug}` || '';
 
     console.log(slug);
+
     // Выполняем два запроса к страпи - первый для получения основных данных страницы
     // и второй для получения меню
     const res = await server.get(
-      `/page-seos?filters[url][$eq]=${slug}&locale=${locale}`
+      `/page-seos?filters[url][$eq]=${slug}&locale=${locale === 'ua' ? 'uk' : locale}`
     );
     const strapiMenu = await server.get(
       `/menus?nested&filters[slug][$eq]=main&populate=*`

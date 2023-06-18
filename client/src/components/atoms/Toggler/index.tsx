@@ -6,10 +6,10 @@ export type TogglerPosition = 'left' | 'center' | 'right';
 const Toggler = () => {
   const [pos, setPos] = useState<TogglerPosition>();
   const router = useRouter();
-  const locale = router.locale;
+  const locale = router.locale === 'ua' ? 'uk' : router.locale;
 
   useEffect(() => {
-    if (locale === 'uk') {
+    if (locale === 'ua') {
       setPos('left');
     } else if (locale === 'ru') {
       setPos('center');
@@ -27,8 +27,8 @@ const Toggler = () => {
       <div className="toggler-container">
         <div className={`switcher ${pos}`}></div>
         <button
-          className={locale === 'uk' ? 'active' : ''}
-          onClick={() => handleLocaleChange('uk')}
+          className={locale === 'ua' ? 'active' : ''}
+          onClick={() => handleLocaleChange('ua')}
         >
           UA
         </button>

@@ -1,5 +1,5 @@
-import MultilineEllipsis from '@/components/atoms/MultilineParagraph';
 import Breadcrumbs, { Crumb } from '@/components/molecules/Breacrumbs';
+import { useEffect, useState } from 'react';
 
 export interface HeroProps {
   title: string;
@@ -7,6 +7,12 @@ export interface HeroProps {
 }
 
 const Hero = ({ title, crumbs }: HeroProps) => {
+    const [updTtitle, setTitle] = useState('');
+    useEffect(() => {
+      if(title){
+        setTitle(`${title.slice(0,75)}...`)
+      }
+    }, [])
   return (
     <div className="container-xxl py-5 bg-primary hero-header mb-5">
       <div className="container mb-5 mt-5 py-2 px-lg-5 mt-md-1 mt-sm-1 mt-xs-0 mt-lg-5">
@@ -16,9 +22,9 @@ const Hero = ({ title, crumbs }: HeroProps) => {
             style={{ marginTop: '40px', marginBottom: '50px' }}
           >
             <h1 className="display-5 text-white animated slideInLeft">
-              <MultilineEllipsis>{title}</MultilineEllipsis>
+              {updTtitle}
             </h1>
-            <Breadcrumbs crumbs={crumbs} pageTitle={title} />
+            <Breadcrumbs crumbs={crumbs} pageTitle={updTtitle} />
           </div>
         </div>
       </div>
