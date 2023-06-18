@@ -35,7 +35,7 @@ export const initialContacts: Contacts = {
   publishedAt: '',
 };
 
-export default function Services({ tags, pagination }) {
+export default function Home({ tags, pagination }) {
   const router = useRouter();
   const locale = router.locale;
 

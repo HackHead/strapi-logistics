@@ -27,7 +27,12 @@
   bottom: 45px;
   z-index: 99;
 }
-
+@media screen and (max-width: 450px){
+  .back-to-top {
+    right: 45px;
+    bottom: 10px !important;
+  }
+}
 /*** Heading ***/
 h1,
 h2,
