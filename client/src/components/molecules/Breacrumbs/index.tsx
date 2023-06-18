@@ -17,7 +17,7 @@ export interface Crumb {
 
 const Breadcrumbs = ({ crumbs, pageTitle }: BreadcrumbsProps) => {
   const router = useRouter();
-  const locale = router.locale;
+  const locale = router.locale === 'ua' ? 'uk' : router.locale;
 
   return (
     <nav aria-label="breadcrumb">

@@ -21,6 +21,8 @@
 @media screen and (max-width: 450px){
   .callback-bt {
     bottom: 110px;
+    right: 31px;
+
   }
 }
 .callback-bt.hovered {

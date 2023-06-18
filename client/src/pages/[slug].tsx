@@ -172,7 +172,7 @@ export async function getServerSideProps({ query, locale }: Query) {
     // Выполняем два запроса к страпи - первый для получения основных данных страницы
     // и второй для получения меню
     const res = await server.get(
-      `/pages?filters[url][$eq]=${slug}&locale=${locale}`
+      `/pages?filters[url][$eq]=${slug}&locale=${locale === 'ua' ? 'uk' : locale}`
     );
     const strapiMenu = await server.get(
       `/menus?nested&filters[slug][$eq]=main&populate=*`

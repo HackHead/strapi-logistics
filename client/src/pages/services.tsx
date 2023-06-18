@@ -37,7 +37,7 @@ export const initialContacts: Contacts = {
 
 export default function Home({ tags, pagination }) {
   const router = useRouter();
-  const locale = router.locale;
+  const locale = router.locale === 'ua' ? 'uk' : router.locale;
 
   const { query } = router;
   const { perPage } = query;
@@ -141,7 +141,7 @@ export async function getServerSideProps({ query, locale }: Query) {
 
   try {
     const res = await server.get(
-      `/page-seos?locale=${locale}&pagination[page]=${page}&pagination[pageSize]=${perPage}`
+      `/page-seos?locale=${locale === 'ua' ? 'uk' : locale}&pagination[page]=${page}&pagination[pageSize]=${perPage}`
     );
 
     const tags = res.data.data;
