@@ -44,8 +44,7 @@ const Call = () => {
   return (
     <div
       className={`callback-bt ${isHovered ? 'hovered' : ''}`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseOver={handleMouseEnter}
     >
       <div
         className={`text-call ${isHovered ? 'hovered' : ''}`}
@@ -63,7 +62,7 @@ const Call = () => {
           <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
         </svg>
       </div>
-      <div className="social-icons callback-icons">
+      <div className="social-icons callback-icons" onMouseOut={handleMouseLeave}>
         <a href={socialData.facebook} className="icon1 callback-icon">
           <Image src="/img/face.png" alt="Facebook" width={34} height={34} />
         </a>
