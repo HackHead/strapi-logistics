@@ -201,11 +201,18 @@ const Footer = () => {
             </p>
             <p className="mb-2">
               <i className="fa fa-phone-alt me-3" />
-              {contacts.phone_number}
+              <a
+                href={`tel:${contacts.phone_number}`}
+                style={{ color: '#fff' }}
+              >
+                {contacts.phone_number}
+              </a>
             </p>
             <p className="mb-2">
               <i className="fa fa-envelope me-3" />
-              {contacts.email}
+              <a href={`mailto:${contacts.email}`} style={{ color: '#fff' }}>
+                {contacts.email}
+              </a>
             </p>
             <div className="d-flex pt-2">
               <a

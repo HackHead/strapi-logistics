@@ -86,7 +86,7 @@ export default function Home() {
                       style={{ marginTop: '40px', marginBottom: '50px' }}
                     >
                       <h1 className="display-4 text-white animated slideInLeft">
-                        {$t[locale].menu.contacts}
+                      {$t[locale].menu.contacts}
                       </h1>
                       <nav aria-label="breadcrumb">
                         <ol className="breadcrumb justify-content-center justify-content-lg-start animated slideInLeft">
@@ -202,12 +202,22 @@ export default function Home() {
                       {contacts.location}
                     </p>
                     <p className="mb-2">
-                      <i className="fa fa-phone-alt text-primary me-3" />
-                      {contacts.phone_number}
+                      <i className="fa fa-phone-alt me-3 text-primary" />
+                      <a
+                        href={`tel:${contacts.phone_number}`}
+                        style={{ color: '#5a5a5a' }}
+                      >
+                        {contacts.phone_number}
+                      </a>
                     </p>
                     <p className="mb-2">
-                      <i className="fa fa-envelope text-primary me-3" />
-                      {contacts.email}
+                      <i className="fa fa-envelope me-3 text-primary" />
+                      <a
+                        href={`mailto:${contacts.email}`}
+                        style={{ color: '#5a5a5a' }}
+                      >
+                        {contacts.email}
+                      </a>
                     </p>
                     {/* кнопка "давайте пообщаемся" */}
                     {/* <div className="border rounded text-center p-4 mt-4">

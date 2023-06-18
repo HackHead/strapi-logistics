@@ -1,3 +1,4 @@
+import MultilineEllipsis from '@/components/atoms/MultilineParagraph';
 import Breadcrumbs, { Crumb } from '@/components/molecules/Breacrumbs';
 
 export interface HeroProps {
@@ -14,8 +15,8 @@ const Hero = ({ title, crumbs }: HeroProps) => {
             className="col-12 text-center text-lg-start"
             style={{ marginTop: '40px', marginBottom: '50px' }}
           >
-            <h1 className="display-4 text-white animated slideInLeft">
-              {title}
+            <h1 className="display-5 text-white animated slideInLeft">
+              <MultilineEllipsis>{title}</MultilineEllipsis>
             </h1>
             <Breadcrumbs crumbs={crumbs} pageTitle={title} />
           </div>

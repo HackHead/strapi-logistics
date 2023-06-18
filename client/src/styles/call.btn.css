@@ -18,7 +18,11 @@
   -webkit-animation: hoverWave linear 1s infinite;
   animation: hoverWave linear 1s infinite;
 }
-
+@media screen and (max-width: 450px){
+  .callback-bt {
+    bottom: 110px;
+  }
+}
 .callback-bt.hovered {
   border: 2px solid #38a3fd;
 }
