@@ -39,9 +39,14 @@ function Menu({ data, show, onTog }) {
       console.log(error);
     }
   };
-
+  const hndl = (() => {
+    
+  })();
   useEffect(() => {
     fetchPages();
+  }, [router]);
+
+  useEffect(() => {
     const handleClick = event => {
       console.log(event.target)
       if (
@@ -59,7 +64,7 @@ function Menu({ data, show, onTog }) {
       document.body.removeEventListener('click', handleClick);
       document.body.removeEventListener('touchstart', handleClick);
     };
-  }, [router]);
+  }, [])
   useEffect(() => {
     setOpenSubmenu({ ...{} });
   }, [router]);
@@ -121,6 +126,7 @@ function Menu({ data, show, onTog }) {
           href={item.attributes.url}
           className={`nav-link navpart`}
           key={item.id}
+          onClick={() => onTog()}
         >
           {' '}
           {locale === 'ru'

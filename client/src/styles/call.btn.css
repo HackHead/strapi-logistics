@@ -1,4 +1,12 @@
 /*кнопка звонка*/
+.callback-wrap {
+  width: 180px;
+  height: 180px;
+  position: fixed;
+  right: 0;
+  bottom: 90px;
+  /* transform: translate(50%, 50%); */
+}
 
 .callback-bt {
   background: #38a3fd;
@@ -7,8 +15,8 @@
   cursor: pointer;
   border: 2px solid transparent;
   display: block;
-  height: 75px;
   width: 75px;
+  height: 75px;
   text-align: center;
   position: fixed;
   right: 32px;
@@ -25,10 +33,10 @@
 
   }
 }
-.callback-bt.hovered {
+.callback-bt.active {
   border: 2px solid #38a3fd;
 }
-.callback-bt.hovered .callback-icons {
+.callback-bt.active .callback-icons {
   transition: all 0.4s linear;
 }
 .callback-icons {
@@ -59,35 +67,35 @@
   opacity: 0;
   pointer-events: none;
 }
-.callback-bt.hovered .callback-icon {
+.callback-bt.active .callback-icon {
   pointer-events: all;
 }
 
-.callback-bt.hovered .callback-icon.icon1 {
+.callback-bt.active .callback-icon.icon1 {
   transform: rotate(-1deg);
   transition: all 0.2s linear;
   opacity: 1;
 }
 
-.callback-bt.hovered .callback-icon.icon2 {
+.callback-bt.active .callback-icon.icon2 {
   transform: rotate(-90deg);
   transition: all 0.2s linear;
   opacity: 1;
 }
 
-.callback-bt.hovered .callback-icon.icon3 {
+.callback-bt.active .callback-icon.icon3 {
   transform: rotate(-179deg);
   transition: all 0.2s linear;
   opacity: 1;
 }
 
-.callback-bt.hovered .callback-icon.icon4 {
+.callback-bt.active .callback-icon.icon4 {
   transform: rotate(-45deg);
   transition: all 0.2s linear;
   opacity: 1;
 }
 
-.callback-bt.hovered .callback-icon.icon5 {
+.callback-bt.active .callback-icon.icon5 {
   transform: rotate(-135deg);
   transition: all 0.2s linear;
   opacity: 1;
@@ -234,4 +242,15 @@
 }
 .callback-icon.icon5 img {
   transform: rotate(135deg);
+}
+.callback-bt.mobile {
+  display: none;
+}
+@media screen and (max-width: 1200px) {
+  .callback-wrap {
+    display: none;
+  }
+  .callback-bt.mobile {
+    display: block;
+  }
 }
