@@ -6,6 +6,7 @@ import { server } from '@/http';
 import Menu from '../menu';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import SearchModal from '../search-modal';
 
 interface SubmenuItem {
   id: number;
@@ -39,7 +40,7 @@ interface Menu {
 const Header = () => {
   const [menus, setMenus] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
-  const router = useRouter();
+  const [showModal, setShowModal] = useState(false)
 
   const fetchMenus = async () => {
     try {
@@ -78,6 +79,8 @@ const Header = () => {
           setShowMenu(false);
         }}
       />
+      <SearchModal onClose={() => setShowModal(false)} show={showModal}/>
+      <button type="button" className="btn text-secondary ms-3" onClick={() => setShowModal(!showModal)}><i className="fa fa-search"></i></button>
     </nav>
   );
 };

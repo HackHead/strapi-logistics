@@ -133,24 +133,6 @@ const Footer = () => {
     >
       <div className="container py-5 px-lg-5">
         <div className="row gy-5 gx-4 pt-3">
-          <div className="col-12">
-            <h5 className="fw-bold text-white mb-4">
-              {$t[locale].footer.subscription.title}
-            </h5>
-            <div className="position-relative" style={{ maxWidth: '400px' }}>
-              <input
-                className="form-control bg-white border-0 w-100 py-3 ps-4 pe-5"
-                type="text"
-                placeholder={$t[locale].footer.subscription.placeholder}
-              />
-              <button
-                type="button"
-                className="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2"
-              >
-                {$t[locale].footer.subscription.submit}
-              </button>
-            </div>
-          </div>
           <div className="col-lg-5 col-md-12">
             <div className="row gy-5 g-4">
               <div className="col-md-6">

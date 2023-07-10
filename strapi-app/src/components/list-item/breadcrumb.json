@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_list_item_breadcrumbs",
+  "info": {
+    "displayName": "Breadcrumb",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

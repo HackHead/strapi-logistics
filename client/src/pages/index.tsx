@@ -6,6 +6,7 @@ import Script from 'next/script';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import $t from '@/locale/global';
+import SearchModal from '@/components/organisms/search-modal';
 
 export default function Home() {
   const router = useRouter();
@@ -70,38 +71,7 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <div className="modal fade" id="searchModal" tabIndex={-1}>
-                <div className="modal-dialog modal-fullscreen">
-                  <div
-                    className="modal-content"
-                    style={{ background: 'rgba(29, 40, 51, 0.8)' }}
-                  >
-                    <div className="modal-header border-0">
-                      <button
-                        type="button"
-                        className="btn bg-white btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      />
-                    </div>
-                    <div className="modal-body d-flex align-items-center justify-content-center">
-                      <div
-                        className="input-group"
-                        style={{ maxWidth: '600px' }}
-                      >
-                        <input
-                          type="text"
-                          className="form-control bg-transparent border-light p-3"
-                          placeholder="Type search keyword"
-                        />
-                        <button className="btn btn-light px-4">
-                          <i className="bi bi-search" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <SearchModal/>
               <div
                 className="container-xxl domain mb-5"
                 style={{ marginTop: '90px' }}

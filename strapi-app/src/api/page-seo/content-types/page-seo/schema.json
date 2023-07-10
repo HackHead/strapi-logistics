@@ -67,6 +67,31 @@
         "preset": "toolbar"
       },
       "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "rating": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "rating.rating"
+    },
+    "faqs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::faq.faq"
+    },
+    "extraLinks": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "list-item.breadcrumb"
     }
   }
 }

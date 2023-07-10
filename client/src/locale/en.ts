@@ -4,6 +4,10 @@ export default {
     contacts: 'Contacts',
     services: 'Services',
     usefull: 'Usefull',
+    search: 'Search',
+  },
+  search: {
+    not_found: 'Results not found'
   },
   footer: {
     subscription: {

@@ -6,6 +6,8 @@ import DefaultLayout from '@/components/layouts/default';
 import Hero from '@/components/organisms/hero';
 import { Crumb } from '@/components/molecules/Breacrumbs';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import SearchModal from '@/components/organisms/search-modal';
 
 // Этот компонент будет генерироваться динамически на основании данных полученых из страпи например:
 // Пользователь переходит на страницу yousite.com/PerevozkaGruzov в браузере, next.js приложение обращается
@@ -28,6 +30,12 @@ export interface PageAttibutes {
   url: string;
   crumbs: Crumb[];
   slug: string;
+  faqs: any[];
+  rating: {
+    id: number;
+    text: string;
+    mark: number;
+  }
 }
 export interface PageMeta {
   pagination: {
@@ -75,9 +83,11 @@ const Page = ({
   slug,
   keywords,
   url,
+  faqs,
+  rating,
+  extraLinks
 }: PageAttibutes) => {
   const router = useRouter();
-  console.log(url);
   if (typeof window !== 'undefined') {
     if (!url) {
       // Redirect to the index page if the page attributes are not found
@@ -124,6 +134,7 @@ const Page = ({
     return ancestors;
   };
 
+ 
   return (
     <>
       {/* 
@@ -135,6 +146,12 @@ const Page = ({
         <meta name="description" content={seo_description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keyword" content={keywords} />
+        {faqs && (
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqs }} />
+        )}
+        {rating && (
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: rating }} />
+        )}
       </Head>
 
       <div className="container-xxl bg-white p-0">
@@ -155,6 +172,26 @@ const Page = ({
               style={{ maxWidth: '90%', margin: '0 auto' }}
             >
               <div dangerouslySetInnerHTML={{ __html: body }}></div>
+
+              <div>
+               {
+                extraLinks.length ? (
+                  <ol itemScope itemType="https://schema.org/BreadcrumbList" style={{margin: '2rem 0 0 0', paddingLeft: '1rem'}}>
+                    {
+                       extraLinks.map(({text, link, id}) => {
+                        return (
+                          <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" key={id}>
+                            <a itemProp="item" href={link}>
+                            <span itemProp="name">{text}</span></a>
+                            <meta itemProp="position" content="1" />
+                          </li>
+                        )
+                      })
+                    }
+                  </ol>
+                )  : null
+               }
+              </div>
             </div>
           </DefaultLayout>
         </div>
@@ -172,7 +209,7 @@ export async function getServerSideProps({ query, locale }: Query) {
     // Выполняем два запроса к страпи - первый для получения основных данных страницы
     // и второй для получения меню
     const res = await server.get(
-      `/pages?filters[url][$eq]=${slug}&locale=${locale === 'ua' ? 'uk' : locale}`
+      `/pages?populate=*&filters[url][$eq]=${slug}&locale=${locale === 'ua' ? 'uk' : locale}`
     );
     const strapiMenu = await server.get(
       `/menus?nested&filters[slug][$eq]=main&populate=*`
@@ -182,6 +219,8 @@ export async function getServerSideProps({ query, locale }: Query) {
     // json в html
     const crumbs = strapiMenu.data.data[0].attributes.items.data;
 
+
+    
     const {
       seo_title,
       seo_description,
@@ -189,8 +228,81 @@ export async function getServerSideProps({ query, locale }: Query) {
       url,
       body,
       keywords,
+      faqs,
+      rating,
+      extraLinks
     }: PageAttibutes = res.data?.data[0].attributes;
+    
+    const generateRatingMicrodata = ():string => {
+      if(!rating){return null}
+      return `
+      {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "description": "${rating.Text}",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": ${rating.Mark},
+          "bestRating": "5",
+          "worstRating:" "1",
+        },
+      }`
+    }
+    const generateFaqsMicrodata = (): string => {
+      if(!faqs || !faqs.data.length){ return null; }
+      
+      const items = faqs.data.reduce((acc, item) => {
+        acc.push({
+          "@type": "Question",
+          "name": item.attributes.Question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.attributes.Answer
+          }
+        });
+    
+        return acc;
+      }, []);
+    
+      const template = `
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": ${JSON.stringify(items)}
+      }`;
+    
+      return template;
+    };
+    
 
+
+    const generateExtraLinkMicrodata = (): string => {
+      if(!extraLink || !extraLink.data.length){ return null; }
+      
+      const items = extraLink.data.reduce((acc, item) => {
+        acc.push({
+          "@type": "Question",
+          "name": item.attributes.Question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.attributes.Answer
+          }
+        });
+    
+        return acc;
+      }, []);
+    
+      const template = `
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": ${JSON.stringify(items)}
+      }`;
+    
+      return template;
+    };
+    
+    
     // Удаляем тег srcset
     const bodyWithoutSrcset = body.replace(
       /<img[^>]+srcset=["'][^"']*["'](?:[^>]*)>/g,
@@ -205,6 +317,7 @@ export async function getServerSideProps({ query, locale }: Query) {
       `${NEXT_HOST}/uploads/$1`
     );
 
+    
     return {
       props: {
         seo_title,
@@ -215,9 +328,13 @@ export async function getServerSideProps({ query, locale }: Query) {
         crumbs,
         slug,
         keywords,
+        faqs: generateFaqsMicrodata(),
+        rating: generateRatingMicrodata(),
+        extraLinks,
       },
     };
   } catch (error) {
+    console.log(error)
     return {
       props: {
         seo_title: '',
@@ -228,6 +345,9 @@ export async function getServerSideProps({ query, locale }: Query) {
         crumbs: '',
         slug: '',
         keywords: '',
+        faqs: [],
+        rating: null,
+        extraLinks
       },
     };
   }

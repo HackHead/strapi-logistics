@@ -10,7 +10,7 @@ const Hero = ({ title, crumbs }: HeroProps) => {
     const [updTtitle, setTitle] = useState('');
     useEffect(() => {
       if(title){
-        setTitle(`${title.slice(0,75)}...`)
+        setTitle(title.length > 75 ? `${title.slice(0,75)}...` : title)
       }
     }, [])
   return (

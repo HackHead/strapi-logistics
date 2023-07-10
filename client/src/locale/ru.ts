@@ -4,6 +4,10 @@ export default {
     contacts: 'Контакты',
     services: 'Услуги',
     usefull: 'Полезное',
+    search: 'Поиск',
+  },
+  search: {
+    not_found: 'Результатов не найдено'
   },
   footer: {
     subscription: {

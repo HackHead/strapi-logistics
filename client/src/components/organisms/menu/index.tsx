@@ -39,9 +39,7 @@ function Menu({ data, show, onTog }) {
       console.log(error);
     }
   };
-  const hndl = (() => {
-    
-  })();
+ 
   useEffect(() => {
     fetchPages();
   }, [router]);
@@ -149,7 +147,7 @@ function Menu({ data, show, onTog }) {
               {$t[locale].menu.main}
             </Link>
 
-            {/* <div className="nav-item dropdown" style={{ cursor: 'pointer' }} onClick={() => { setOpenSubmenu({ ...{}, [SERVICES_ID]: !openSubmenu[SERVICES_ID] });  }}>
+            <div className="nav-item dropdown" style={{ cursor: 'pointer' }} onClick={() => { setOpenSubmenu({ ...{}, [SERVICES_ID]: !openSubmenu[SERVICES_ID] });  }}>
             <span className="nav-link dropdown-toggle navpart">
               {$t[locale].menu.usefull}
             </span>
@@ -158,7 +156,7 @@ function Menu({ data, show, onTog }) {
                 <Link href="/services" className="nav-link navpart">{$t[locale].menu.services}</Link>
               </div>
             }
-            </div> */}
+            </div>
             {data.map(item => renderMenuItem(item, null))}
             <Link href="/contacts" className={`nav-item nav-link navpart`}>
               {$t[locale].menu.contacts}

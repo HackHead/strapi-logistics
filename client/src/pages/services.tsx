@@ -143,10 +143,13 @@ export async function getServerSideProps({ query, locale }: Query) {
     const res = await server.get(
       `/page-seos?locale=${locale === 'ua' ? 'uk' : locale}&pagination[page]=${page}&pagination[pageSize]=${perPage}`
     );
+    console.log('\n\n\n\n\n\n\n'  )
 
     const tags = res.data.data;
     const pagination = res.data.meta.pagination;
 
+    console.log(page)
+    console.log(pagination.pageCount)
     if (page > pagination.pageCount) {
       return {
         notFound: true,

@@ -1,13 +1,35 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 import Script from 'next/script';
+import getConfig from 'next/config';
+import { useRouter } from 'next/router';
 // Это так же вспомогательный файл от next js сюда вы можете импортировтаь скрипты
 // как этто сделано ниже
 
-export default function Document() {
+export default function Document({locale}: {locale: string}) {
+  const { publicRuntimeConfig } = getConfig();
+  const { NEXT_HOST } = publicRuntimeConfig;
+
+  const searchbox = `
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "${NEXT_HOST}/${locale}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "${NEXT_HOST}/${locale}/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+  `;
+
   return (
     <Html lang="en">
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: searchbox }} />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap"
@@ -29,6 +51,7 @@ export default function Document() {
         <Script src="/scripts/waypoints.min.js"></Script>
         <Script src="/scripts/counterup.min.js"></Script>
         <Script src="/scripts/main.js"></Script>
+        
       </Head>
       <body>
         <Main />
@@ -36,4 +59,13 @@ export default function Document() {
       </body>
     </Html>
   );
+}
+
+
+export function getInitialProps({locale}: {locale: string}){
+  const _locale = locale === 'ua' ? 'uk' : locale;
+
+  return { 
+    locale: _locale,
+  };
 }
