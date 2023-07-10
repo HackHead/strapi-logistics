@@ -287,8 +287,8 @@ export async function getServerSideProps({ query, locale }: Query) {
           "@type": "AggregateRating",
           "ratingValue": ${rating.Mark},
           "bestRating": "5",
-          "worstRating:" "1",
-        },
+          "worstRating": "1"
+        }
       }`
     }
     const generateFaqsMicrodata = (): string => {
